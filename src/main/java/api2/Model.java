@@ -3,10 +3,10 @@ package api2;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import org.junit.jupiter.api.Assertions;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 public class Model {
@@ -35,7 +35,7 @@ public class Model {
     }
 
     @JsonIgnore
-    public ObjectNode getResponse(){
+    public ObjectNode getResponse() {
         return connector.getResponse();
     }
 
@@ -67,6 +67,8 @@ public class Model {
     // Send request
     public Model run() throws IOException {
         connector.prepare().send(getRequest());
+        printWarnings();
+        printErrors();
         return this;
     }
     //------------------------------------------------------------------------------------------------------------------
@@ -95,7 +97,33 @@ public class Model {
         return this;
     }
 
-    public Model assertTrue(Boolean condition){
+    public Model printWarnings() {
+        if (attentions("warnings").size() > 0) {
+            System.out.println("WARNINGS: " + attentions("warnings"));
+        }
+        return this;
+    }
+
+    public Model printErrors() {
+        if (attentions("errors").size() > 0) {
+            System.out.println("ERRORS: " + attentions("errors"));
+        }
+        return this;
+    }
+
+    private ArrayList attentions(String type) {
+        ArrayList<Object> scope = new ArrayList<>(getResponse().findValues(type));
+        ArrayList<String> list = new ArrayList<>();
+        for (Object o : scope) {
+            String s = o.toString().replace("[", "").replace("]", "").trim();
+            if (s.length() > 0) {
+                list.add(s);
+            }
+        }
+        return list;
+    }
+
+    public Model assertTrue(Boolean condition) throws IOException {
         Assertions.assertTrue(condition);
         return this;
     }

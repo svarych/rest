@@ -73,10 +73,17 @@ class ExampleTests {
     }
 
     @Test
+    void t04()throws IOException{
+        model = new CreateEW()
+                .build().printRequest().run().printResponse();
+    }
+
+    @Test
     void t4() {
         Helper h = new Helper();
         System.out.println(h.getToday());
-        System.out.println(h.getCurrentDate().plusDays(2).format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
+        System.out.println(h.getDaysPlus(2));
+        System.out.println(h.getDaysMinus(3));
     }
 
     @Test
