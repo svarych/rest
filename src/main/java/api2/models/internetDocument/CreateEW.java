@@ -18,7 +18,7 @@ public final class CreateEW extends ModelBuilder {
                 .addProperty("PayerType", "Sender")
                 .addProperty("PaymentMethod", "Cash")
                 .addProperty("DateTime", getHelper().getToday())
-                .addProperty("CargoType", "Cargo")
+                .addProperty("CargoType", "Parcel")
                 .addProperty("VolumeGeneral", "0.1")
                 .addProperty("Weight", "10")
                 .addProperty("ServiceType", "WarehouseDoors")
