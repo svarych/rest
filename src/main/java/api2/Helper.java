@@ -1,23 +1,29 @@
 package api2;
 
-import lombok.Getter;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Helper {
 
     public Helper() {
-        setDate();
+        setDateTime();
     }
 
-    @Getter
-    private String currentDate;
+// DATE TIME -----------------------------------------------------------------------------------------------------------
+    private String today;
+    private LocalDateTime currentDate;
 
-    // Current Date
-    private void setDate() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        currentDate = format.format(calendar.getTime());
+    private void setDateTime() {
+        currentDate = LocalDateTime.now();
+        today = currentDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
+
+    public String getToday() {
+        return today;
+    }
+
+    public LocalDateTime getCurrentDate() {
+        return currentDate;
+    }
+// END OF DATE TIME ----------------------------------------------------------------------------------------------------
 }

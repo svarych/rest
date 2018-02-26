@@ -2,7 +2,6 @@ package api2;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import lombok.Getter;
 
 import javax.net.ssl.HttpsURLConnection;
 import java.io.*;
@@ -11,13 +10,11 @@ import java.util.Properties;
 
 public class Connector {
     private HttpsURLConnection connection;
-    @Getter
     private String prettyResponse;
-    @Getter
     private ObjectNode response;
 
     private Properties properties = new Properties();
-    private InputStream configFile = new FileInputStream("./src/main/resources/connection.properties");
+    private InputStream configFile = new FileInputStream("./src/main/resources/properties/connection.properties");
 
     Connector() throws FileNotFoundException {
     }
@@ -51,5 +48,13 @@ public class Connector {
         connection.setRequestProperty("User-Agent", USER_AGENT);
         connection.setDoOutput(true);
         return this;
+    }
+
+    public String getPrettyResponse() {
+        return prettyResponse;
+    }
+
+    public ObjectNode getResponse() {
+        return response;
     }
 }

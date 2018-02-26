@@ -3,9 +3,9 @@ package api2;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import lombok.Getter;
 
-import java.io.FileNotFoundException;
+import org.junit.jupiter.api.Assertions;
+
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
@@ -13,22 +13,16 @@ public class Model {
     private Connector connector = new Connector();
     private ObjectMapper mapper = new ObjectMapper();
 
-    @Getter
     @JsonIgnore
     private String request;
 
-    @Getter
     @JsonIgnore
     private ObjectNode requestNode;
 
-    @Getter
     private String apiKey;
-    @Getter
     private String modelName;
-    @Getter
     private String calledMethod;
-    @Getter
-    private LinkedHashMap<Object, Object> methodProperties;
+    private LinkedHashMap<String, Object> methodProperties;
 
     Model(final ModelBuilder modelBuilder) throws IOException {
         this.apiKey = modelBuilder.getApiKey();
@@ -40,7 +34,33 @@ public class Model {
         this.requestNode = mapper.readValue(this.getRequest(), ObjectNode.class);
     }
 
-    protected Model() throws FileNotFoundException {
+    @JsonIgnore
+    public ObjectNode getResponse(){
+        return connector.getResponse();
+    }
+
+    public String getRequest() {
+        return request;
+    }
+
+    public ObjectNode getRequestNode() {
+        return requestNode;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public String getCalledMethod() {
+        return calledMethod;
+    }
+
+    public LinkedHashMap<String, Object> getMethodProperties() {
+        return methodProperties;
     }
 
     //==================================================================================================================
@@ -72,6 +92,11 @@ public class Model {
     // Print formatted response
     public Model printPrettyResponse() {
         System.out.println(connector.getPrettyResponse());
+        return this;
+    }
+
+    public Model assertTrue(Boolean condition){
+        Assertions.assertTrue(condition);
         return this;
     }
 

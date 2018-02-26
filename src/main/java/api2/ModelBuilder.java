@@ -1,23 +1,16 @@
 package api2;
 
-import lombok.Getter;
-
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
 
 public class ModelBuilder {
-    @Getter
     private Helper helper = new Helper();
 
-    @Getter
     private String apiKey;
-    @Getter
     private String modelName;
-    @Getter
     private String calledMethod;
-    @Getter
-    private LinkedHashMap<Object, Object> methodProperties = new LinkedHashMap<Object, Object>();
+    private LinkedHashMap<String, Object> methodProperties = new LinkedHashMap<>();
 
     public ModelBuilder apiKey(String apiKey) {
         this.apiKey = apiKey;
@@ -34,12 +27,22 @@ public class ModelBuilder {
         return this;
     }
 
-    public ModelBuilder addMethodProperty(Object K, Object V) {
+    public ModelBuilder addProperty(String K, Object V) {
         methodProperties.put(K, V);
         return this;
     }
 
-    public ModelBuilder properties(LinkedHashMap<Object, Object> map) {
+    public ModelBuilder removeProperty(String K) {
+        methodProperties.remove(K);
+        return this;
+    }
+
+    public ModelBuilder replaceProperty(String K, Object V) {
+        methodProperties.replace(K, V);
+        return this;
+    }
+
+    public ModelBuilder propertiesMap(LinkedHashMap<String, Object> map) {
         methodProperties = map;
         return this;
     }
@@ -48,4 +51,23 @@ public class ModelBuilder {
         return new Model(this);
     }
 
+    public Helper getHelper() {
+        return helper;
+    }
+
+    public String getApiKey() {
+        return apiKey;
+    }
+
+    public String getModelName() {
+        return modelName;
+    }
+
+    public String getCalledMethod() {
+        return calledMethod;
+    }
+
+    public LinkedHashMap<String, Object> getMethodProperties() {
+        return methodProperties;
+    }
 }
