@@ -33,10 +33,12 @@ public class InternetDocumentTests {
     @RepeatedTest(2)
     @DisplayName("Get EW Ref`s to delete and then delete it")
     void deleteEW(RepetitionInfo info) throws IOException {
+        // Get list of Ref`s to delete
         if (info.getCurrentRepetition() == 1) {
             model = new DeleteEW().deleteAllToday().build();
             assertTrue(model.getRequestNode().findValues("DocumentRefs").get(0).size() > 0);
         }
+        // Deleting EW`s by Ref`s we get on repetition 1
         if (info.getCurrentRepetition() == 2) {
             model = new DeleteEW().deleteAllToday().build().run();
             assertTrue(model.getResponse().findValues("Ref").size() > 0);
