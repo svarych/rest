@@ -1,11 +1,9 @@
 package api2.internetDocument;
 
-import api2.Connector;
 import api2.Model;
 import api2.models.internetDocument.CreateEW;
 import api2.models.internetDocument.DeleteEW;
 import api2.models.internetDocument.GetListEW;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 

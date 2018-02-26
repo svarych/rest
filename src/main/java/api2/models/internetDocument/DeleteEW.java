@@ -43,11 +43,7 @@ public final class DeleteEW extends ModelBuilder {
     }
 
     private ArrayList getRefList() throws IOException {
-        Model model = new ModelBuilder()
-                .apiKey("38d9f4c9c98686aca629634a245d7828")
-                .modelName("InternetDocument")
-                .calledMethod("getDocumentList")
-                .addProperty("GetFullList", "1").build().run();
+        Model model = new GetListEW().build().run();
         return refList = new ArrayList<>(model.getResponse().findValues("Ref"));
     }
 }

@@ -2,7 +2,7 @@ package api2.models.internetDocument;
 
 import api2.ModelBuilder;
 
-public class GetListEW extends ModelBuilder {
+public final class GetListEW extends ModelBuilder {
 
     public GetListEW() {
         this

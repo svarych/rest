@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 
 
 public class ModelBuilder {
+
     private Helper helper = new Helper();
 
     private String apiKey;

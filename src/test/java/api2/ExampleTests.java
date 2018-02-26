@@ -1,11 +1,14 @@
 package api2;
 
-import jdk.nashorn.internal.ir.ObjectNode;
-import org.junit.jupiter.api.Test;
 import api2.models.internetDocument.CreateEW;
+import api2.models.internetDocument.CreateEWBackwardDelivery;
+import api2.models.internetDocument.CreateEWToAddress;
+import org.junit.jupiter.api.Test;
 
-import java.io.*;
-import java.time.format.DateTimeFormatter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -73,7 +76,7 @@ class ExampleTests {
     }
 
     @Test
-    void t04()throws IOException{
+    void t04() throws IOException {
         model = new CreateEW()
                 .build().printRequest().run().printResponse();
     }
@@ -92,8 +95,18 @@ class ExampleTests {
         FileReader fileReader = new FileReader(text);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line;
-        while ((line = bufferedReader.readLine()) != null){
+        while ((line = bufferedReader.readLine()) != null) {
             System.out.println(line);
         }
+    }
+
+    @Test
+    void t05() throws IOException {
+        model = new CreateEWBackwardDelivery().build().printPrettyRequest();
+    }
+
+    @Test
+    void t06() throws IOException {
+        model = new CreateEWToAddress().apiKey("123").build().printPrettyRequest();
     }
 }
