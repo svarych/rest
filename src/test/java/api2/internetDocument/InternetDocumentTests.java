@@ -11,32 +11,29 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+
 public class InternetDocumentTests {
 
     private Model model;
 
+    public InternetDocumentTests() {
+    }
+
     @RepeatedTest(2)
-    void t00() throws IOException {
-        model = new CreateEW().build().run().printPrettyResponse();
-        assertTrue(model.getResponse().findValue("Ref").isTextual());
-
+    void createEWTest() throws Throwable {
+        model = new CreateEW().build().run();
+        assertTrue(model.getResponse().get("success").asBoolean());
     }
 
     @Test
-    void t01() throws IOException {
-        model = new GetListEW().getFullList().getPage(2).build().printPrettyRequest().run().printResponse();
-        System.out.println(model.getResponse().findValues("IntDocNumber").size());
+    void getEWListTest() throws IOException {
+        model = new GetListEW().getTodayList().build().run();
+        assertTrue(model.getResponse().get("success").asBoolean());
     }
 
     @Test
-    void t02() throws IOException {
-        model = new GetListEW().getFullList().build().run();
-        System.out.println(model.getResponse().findValues("IntDocNumber").size());
-    }
-
-    @Test
-    void t0() throws IOException {
+    void deleteAllTodayEWsTest() throws IOException {
         model = new DeleteEW().deleteAllToday().build().printPrettyRequest();
-
+        assertTrue(model.getRequestNode().findValues("DocumentRefs").get(0).size() > 0);
     }
 }

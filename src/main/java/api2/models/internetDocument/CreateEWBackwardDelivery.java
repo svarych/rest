@@ -13,12 +13,12 @@ public final class CreateEWBackwardDelivery extends ModelBuilder {
     @SuppressWarnings("SpellCheckingInspection")
     public CreateEWBackwardDelivery() {
         CreateEW createEW = new CreateEW();
-        this.apiKey(createEW.getApiKey());
-        this.modelName(createEW.getModelName());
-        this.calledMethod(createEW.getCalledMethod());
-        this.propertiesMap(createEW.getMethodProperties());
+        apiKey(createEW.getApiKey());
+        modelName(createEW.getModelName());
+        calledMethod(createEW.getCalledMethod());
+        propertiesMap(createEW.getMethodProperties());
 
-        this.addProperty("BackwardDeliveryData", backwardDeliveryData());
+        addProperty("BackwardDeliveryData", backwardDeliveryData());
     }
 
     private LinkedHashMap<String, Object> backwardDeliveryData() {

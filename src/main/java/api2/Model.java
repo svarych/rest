@@ -123,7 +123,7 @@ public class Model {
         return list;
     }
 
-    public Model assertTrue(Boolean condition) throws IOException {
+    public Model assertTrue(Boolean condition){
         Assertions.assertTrue(condition);
         return this;
     }
