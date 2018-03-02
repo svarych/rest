@@ -57,7 +57,6 @@ public class Connector {
     }
 
     private void runOnLive(String request) throws IOException {
-        System.out.println("SERVER: " + properties.getProperty("url.live"));
         url = new URL(properties.getProperty("url.live"));
         HttpsURLConnection https = (HttpsURLConnection) url.openConnection();
 
@@ -76,7 +75,6 @@ public class Connector {
     }
 
     private void runOnTest(String request) throws IOException {
-        System.out.println("SERVER: " + properties.getProperty("url.test"));
         url = new URL(properties.getProperty("url.test"));
         HttpURLConnection http = (HttpURLConnection) url.openConnection();
 

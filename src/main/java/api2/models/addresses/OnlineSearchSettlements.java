@@ -10,14 +10,13 @@ import api2.service.ModelBuilder;
  * Онлайн поиск в справочнике населенных пунктов
  * Метод «searchSettlements», работает в модели «Address», этот метод необходим для ОНЛАЙН ПОИСКА населенных пунктов.
  * С данным методом нет необходимости хранить на своей стороне справочники и заботиться о их обновлениях.
+ * <p>
+ * Доступность: Не требует использования API-ключа.
  */
-public final class SearchSettlements extends ModelBuilder {
+public final class OnlineSearchSettlements extends ModelBuilder {
 
-    /**
-     * Доступность: Не требует использования API-ключа.
-     */
     @SuppressWarnings("SpellCheckingInspection")
-    public SearchSettlements() {
+    public OnlineSearchSettlements() {
         this
                 .modelName("Address")
                 .calledMethod("searchSettlements")

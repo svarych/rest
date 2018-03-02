@@ -1,7 +1,7 @@
 package api2.addresses.live;
 
-import api2.service.Model;
 import api2.models.addresses.*;
+import api2.service.Model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,14 +16,14 @@ class Tests {
     @Test
     @DisplayName("Search Settlement")
     void searchSettlementsTest() throws Throwable {
-        model = new SearchSettlements().replaceProperty("CityName", "Бровари").build().run();
+        model = new OnlineSearchSettlements().replaceProperty("CityName", "Бровари").build().run();
         assertTrue(model.getResponse().findValues("MainDescription").size() > 0);
     }
 
     @Test
     @DisplayName("Search Streets on Settlement")
     void searchStreetsOnSettlementTest() throws IOException {
-        model = new SearchStreets().build().printPrettyRequest().run();
+        model = new OnlineSearchStreets().build().printPrettyRequest().run();
         assertTrue(model.getResponse().findValues("TotalCount").size() > 0);
     }
 
@@ -91,5 +91,21 @@ class Tests {
         assertTrue(model.getResponse().findValues("Description").size() == 25);
     }
 
+    /**
+     * В даномі тесті можна робити запит на отримання вулиць за назвою або її частиною -- byStreetName("Гру");
+     */
+    @Test
+    @DisplayName("Get streets of company")
+    void getStreetsOfCompanyTest() throws IOException {
+        model = new GetStreetsOfCompany().byStreetName("Гру").build().run().printPrettyResponse();
+        assertTrue(model.getResponse().findValues("Description").size() > 0);
+    }
 
+    //todo: написати JavaDoc та додаткові методи в класі
+    @Test
+    @DisplayName("Get warehouses and types of warehouses")
+    void getWarehousesTest() throws IOException {
+        model = new GetWarehouses().build().run().printPrettyResponse();
+        assertTrue(model.getResponse().findValues("SiteKey").size() > 0);
+    }
 }

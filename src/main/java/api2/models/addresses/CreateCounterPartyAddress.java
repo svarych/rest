@@ -9,12 +9,11 @@ import api2.service.ModelBuilder;
 /**
  * Создать адрес контрагента (отправитель/получатель)
  * Метод «Save» , работает в модели «Address» , этот метод сохраняет адреса контрагента отправителя/получателя.
+ *
+ * Доступность: Требует использования API-ключа.
  */
 public final class CreateCounterPartyAddress extends ModelBuilder {
 
-    /**
-     * Доступность: Требует использования API-ключа.
-     */
     public CreateCounterPartyAddress() {
         this
                 .apiKey("38d9f4c9c98686aca629634a245d7828")

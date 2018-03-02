@@ -15,16 +15,17 @@ import api2.service.ModelBuilder;
  * <p>
  * Также в методе доступен поиск по строке, для него нужно указать параметр FindByString.
  * <p>
- * Важно! Поиск по строке возможен только на Украинском языке. Пример:
+ * Важно! Поиск по строке возможен только на Украинском языке.
+ * <p>
+ * Необходимо сохранять копию справочников на стороне клиента и поддерживать ее в актуальном состоянии.
+ * Рекомендуется проводить обновление справочников раз в месяц.
+ * <p>
+ * Параметр "Warehouse": "1 или 0" позволит отобразить только те населенные пункты в которых есть отделения "Нова пошта"
+ * <p>
+ * Доступность: Требует использования API-ключа.
  */
 public final class GetSettlementsUkraine extends ModelBuilder {
 
-    /**
-     * Необходимо сохранять копию справочников на стороне клиента и поддерживать ее в актуальном состоянии.
-     * Рекомендуется проводить обновление справочников раз в месяц.
-     * <p>
-     * Параметр "Warehouse": "1 или 0" позволит отобразить только те населенные пункты в которых есть отделения "Нова пошта"
-     */
     @SuppressWarnings("SpellCheckingInspection")
     public GetSettlementsUkraine() {
         this
@@ -40,6 +41,9 @@ public final class GetSettlementsUkraine extends ModelBuilder {
 
 //    ==================================================================================================================
 
+    /**
+     * Метод дозволяє отримати населений пункт за назвою
+     */
     public GetSettlementsUkraine byName(String name) {
         this
                 .removeProperty("AreaRef")
@@ -50,6 +54,9 @@ public final class GetSettlementsUkraine extends ModelBuilder {
         return this;
     }
 
+    /**
+     * Метод дозволяє отримати населений пункт за ознакою "з відділеннями" або "без відділень" -- withWarehouses(true/false)
+     */
     public GetSettlementsUkraine withWarehouses(boolean condition) {
         if (condition) {
             this.addProperty("Warehouse", 1);
@@ -57,11 +64,18 @@ public final class GetSettlementsUkraine extends ModelBuilder {
         return this;
     }
 
+    /**
+     * Метод дозволяє отримати частину населених пунктів, що видаються системою на відповідній сторінці
+     * На одну сторінку виводиться 150 записів. Тому є можливість вказувати сторінку результатів -- page(2);
+     */
     public GetSettlementsUkraine page(int page) {
         this.addProperty("Page", page);
         return this;
     }
 
+    /**
+     * Метод дозволяє отримати усі міста
+     */
     public GetSettlementsUkraine getAll() {
         this
                 .removeProperty("Ref")
