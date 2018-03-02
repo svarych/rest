@@ -28,7 +28,7 @@ public class Model {
     Model(final ModelBuilder modelBuilder) throws IOException {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
-        
+
         this.apiKey = modelBuilder.getApiKey();
         this.modelName = modelBuilder.getModelName();
         this.calledMethod = modelBuilder.getCalledMethod();
@@ -75,6 +75,7 @@ public class Model {
         printErrors();
         return this;
     }
+
     public Model run(Enum server) throws IOException {
         connector.send(getRequest(), server);
         printWarnings();

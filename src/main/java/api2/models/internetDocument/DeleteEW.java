@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public final class DeleteEW extends ModelBuilder {
 
     private ArrayList refList;
@@ -19,7 +18,7 @@ public final class DeleteEW extends ModelBuilder {
     private ArrayList<String> LIST = new ArrayList<>();
 
     public DeleteEW() throws IOException {
-        this.refList = getRefList();
+        refList = getRefList();
         this
                 .apiKey("38d9f4c9c98686aca629634a245d7828")
                 .modelName("InternetDocument")
