@@ -1,6 +1,10 @@
 package api2;
 
 import api2.models.internetDocument.*;
+import api2.service.Connector;
+import api2.service.Helper;
+import api2.service.Model;
+import api2.service.ModelBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -9,8 +13,8 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.Properties;
 
-import static api2.Connector.server.live;
-import static api2.Connector.server.test;
+import static api2.service.Connector.server.live;
+import static api2.service.Connector.server.test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Examples {

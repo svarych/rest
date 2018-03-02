@@ -4,7 +4,7 @@
 
 package api2.models.addresses;
 
-import api2.ModelBuilder;
+import api2.service.ModelBuilder;
 
 /**
  * Онлайн поиск в справочнике населенных пунктов

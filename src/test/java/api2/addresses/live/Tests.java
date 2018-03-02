@@ -1,6 +1,6 @@
 package api2.addresses.live;
 
-import api2.Model;
+import api2.service.Model;
 import api2.models.addresses.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

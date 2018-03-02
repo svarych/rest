@@ -1,6 +1,6 @@
 package api2.models.internetDocument;
 
-import api2.ModelBuilder;
+import api2.service.ModelBuilder;
 
 public final class GetListEW extends ModelBuilder {
 

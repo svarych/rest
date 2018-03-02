@@ -1,4 +1,4 @@
-package api2;
+package api2.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -9,8 +9,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Properties;
 
-import static api2.Connector.server.live;
-import static api2.Connector.server.test;
+import static api2.service.Connector.server.live;
+import static api2.service.Connector.server.test;
 
 public class Connector {
 
@@ -23,12 +23,12 @@ public class Connector {
 
     private Properties properties = new Properties();
 
-    Connector() throws IOException {
+    public Connector() throws IOException {
         InputStream configFile = new FileInputStream("./src/main/resources/properties/connection.properties");
         properties.load(configFile);
     }
 
-    enum server {
+    public enum server {
         live, test
     }
 

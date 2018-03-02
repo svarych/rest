@@ -4,8 +4,8 @@
 
 package api2.models.internetDocument;
 
-import api2.Model;
-import api2.ModelBuilder;
+import api2.service.Model;
+import api2.service.ModelBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;

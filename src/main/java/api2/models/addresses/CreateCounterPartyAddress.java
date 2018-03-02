@@ -4,7 +4,7 @@
 
 package api2.models.addresses;
 
-import api2.ModelBuilder;
+import api2.service.ModelBuilder;
 
 /**
  * Создать адрес контрагента (отправитель/получатель)

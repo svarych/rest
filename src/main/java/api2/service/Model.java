@@ -1,4 +1,4 @@
-package api2;
+package api2.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

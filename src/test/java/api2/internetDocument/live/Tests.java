@@ -1,6 +1,6 @@
 package api2.internetDocument.live;
 
-import api2.Model;
+import api2.service.Model;
 import api2.models.internetDocument.CreateEW;
 import api2.models.internetDocument.DeleteEW;
 import api2.models.internetDocument.GetListEW;

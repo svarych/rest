@@ -1,11 +1,11 @@
-package api2;
+package api2.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Helper {
 
-    Helper() {
+    public Helper() {
         setDateTime();
     }
 
