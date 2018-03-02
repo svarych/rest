@@ -1,6 +1,7 @@
 package api2;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.Assertions;
@@ -25,6 +26,9 @@ public class Model {
     private LinkedHashMap<String, Object> methodProperties;
 
     Model(final ModelBuilder modelBuilder) throws IOException {
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
+        
         this.apiKey = modelBuilder.getApiKey();
         this.modelName = modelBuilder.getModelName();
         this.calledMethod = modelBuilder.getCalledMethod();
@@ -66,7 +70,13 @@ public class Model {
     //==================================================================================================================
     // Send request
     public Model run() throws IOException {
-        connector.prepare().send(getRequest());
+        connector.send(getRequest());
+        printWarnings();
+        printErrors();
+        return this;
+    }
+    public Model run(Enum server) throws IOException {
+        connector.send(getRequest(), server);
         printWarnings();
         printErrors();
         return this;
@@ -97,18 +107,16 @@ public class Model {
         return this;
     }
 
-    public Model printWarnings() {
+    private void printWarnings() {
         if (attentions("warnings").size() > 0) {
             System.out.println("WARNINGS: " + attentions("warnings"));
         }
-        return this;
     }
 
-    public Model printErrors() {
+    private void printErrors() {
         if (attentions("errors").size() > 0) {
             System.out.println("ERRORS: " + attentions("errors"));
         }
-        return this;
     }
 
     private ArrayList attentions(String type) {
@@ -123,7 +131,7 @@ public class Model {
         return list;
     }
 
-    public Model assertTrue(Boolean condition){
+    public Model assertTrue(Boolean condition) {
         Assertions.assertTrue(condition);
         return this;
     }

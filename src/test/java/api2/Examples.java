@@ -1,17 +1,18 @@
 package api2;
 
 import api2.models.internetDocument.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.util.Properties;
 
+import static api2.Connector.server.live;
+import static api2.Connector.server.test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ExampleTests {
+class Examples {
 
     private Model model;
 
@@ -25,7 +26,7 @@ class ExampleTests {
         System.out.println(model.getRequestNode().get("apiKey"));
 
         Connector connector = new Connector();
-        connector.prepare().send(model.getRequest());
+        connector.send(model.getRequest());
 
         System.out.println(connector.getResponse());
         System.out.println(connector.getPrettyResponse());
@@ -129,7 +130,40 @@ class ExampleTests {
 
     @Test
     void t14() throws IOException {
-        model = new DeleteEW().deleteAllToday().build().printPrettyRequest();
+        model = new DeleteEW().deleteAllToday().build().printPrettyRequest().run().printResponse();
+    }
 
+    @Test
+    void requestToTestServer() throws IOException {
+        model = new ModelBuilder()
+                .modelName("Address")
+                .calledMethod("getWarehouses")
+                .addProperty("CityName", "Рахів")
+                .build().printPrettyRequest()
+                .run(live).printPrettyResponse()
+        ;
+    }
+
+    @Test
+    void getApiKey() throws IOException {
+        new ModelBuilder().modelName("CorporateUserGeneral").calledMethod("getCorporateByLogin")
+                .addProperty("Login", "test_tech01")
+                .addProperty("Password", "123456")
+                .build()
+                .printRequest()
+
+                .run(test)
+
+                .printPrettyResponse();
+    }
+
+    @Test
+    @DisplayName("Get list of Today created EW`s from test server")
+    void getEWTodayFromTestServer() throws IOException {
+        Properties properties = new Properties();
+        InputStream configFile = new FileInputStream("./src/main/resources/properties/connection.properties");
+        properties.load(configFile);
+        model = new GetListEW().getTodayList().apiKey(properties.getProperty("apiKey.test")).build().run(test);
+        System.out.println(model.getResponse().findValues("IntDocNumber"));
     }
 }

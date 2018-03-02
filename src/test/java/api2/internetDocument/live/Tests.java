@@ -1,4 +1,4 @@
-package api2.internetDocument;
+package api2.internetDocument.live;
 
 import api2.Model;
 import api2.models.internetDocument.CreateEW;
@@ -11,7 +11,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
-public class InternetDocumentTests {
+class Tests {
 
     private Model model;
 
