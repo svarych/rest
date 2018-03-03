@@ -167,6 +167,37 @@ class Examples {
     }
 
     @Test
+    @DisplayName("Get api key (live)")
+    void getApiKeyCorporateLiveTest() throws IOException {
+        new ModelBuilder().modelName("CorporateUserGeneral").calledMethod("getCorporateByLogin")
+                .addProperty("Login", "50cdd")
+                .addProperty("Password", "1234")
+                .build().printRequest()
+                .run(live)
+                .printPrettyResponse();
+    }
+
+    @Test
+    @DisplayName("Get all Api-keys for user by any one key (loyalty live)")
+    void getAllApiKeysLiveTest() throws IOException {
+        new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
+                .apiKey("38d9f4c9c98686aca629634a245d7828")
+                .build().printRequest()
+                .run(live)
+                .printPrettyResponse();
+    }
+
+    @Test
+    @DisplayName("Get all Api-keys for user by any one key (corporate live)")
+    void getAllApiKeysLiveTest2() throws IOException {
+        new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
+                .apiKey("39c9b0a6cecf2a4368ee83abfaa7f597")
+                .build().printRequest()
+                .run(live)
+                .printPrettyResponse();
+    }
+
+    @Test
     @DisplayName("Get list of Today created EW`s from test server")
     void getEWTodayFromTestServer() throws IOException {
         model = new GetListEW().getTodayList().apiKey(properties.getProperty("apiKey.test")).build().run(test);

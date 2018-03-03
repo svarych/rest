@@ -8,8 +8,8 @@ import org.junit.jupiter.api.*;
 
 import java.io.IOException;
 
+import static api2.service.Connector.server.live;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 class Tests {
 
@@ -48,14 +48,14 @@ class Tests {
     @Test
     @DisplayName("Create EW")
     void createEWTest() throws Throwable {
-        model = new CreateEW().build().run();
+        model = new CreateEW().build().printPrettyRequest().run().printPrettyResponse();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 
     @Test
     @DisplayName("Get list of EW`s")
     void getEWListTest() throws IOException {
-        model = new GetListEW().getTodayList().build().run();
+        model = new GetListEW().getTodayList().build().run().printPrettyResponse();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 
