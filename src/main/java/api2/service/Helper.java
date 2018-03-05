@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static api2.service.Connector.server.live;
+import static api2.service.Connector.server.test;
 
 public class Helper {
 
@@ -48,7 +49,7 @@ public class Helper {
         return input.replace("\"", "").replace("[", "").replace("]", "");
     }
 
-    public String getApiKeyLoyalty() throws IOException {
+    public String getApiKeyLoyaltyLive() throws IOException {
         Model model = new ModelBuilder()
                 .modelName("LoyaltyUser").calledMethod("getLoyaltyUserByLogin")
                 .addProperty("Login", "50cdd@hell.yeah")
@@ -57,7 +58,7 @@ public class Helper {
         return clear(model.getResponse().findValue("ApiKey").toString());
     }
 
-    public String getApiKeyCorporate() throws IOException {
+    public String getApiKeyCorporateLive() throws IOException {
         Model model = new ModelBuilder()
                 .modelName("CorporateUserGeneral").calledMethod("getCorporateByLogin")
                 .addProperty("Login", "50cdd")
@@ -66,14 +67,54 @@ public class Helper {
         return clear(model.getResponse().findValue("ApiKey").toString());
     }
 
+    public String getApiKeyLoyaltyTest() throws IOException {
+        Model model = new ModelBuilder()
+                .modelName("LoyaltyUser").calledMethod("getLoyaltyUserByLogin")
+                .addProperty("Login", "fender@i.ua")
+                .addProperty("Password", "12345")
+
+                .build()
+                .printPrettyRequest()
+
+                .run(test)
+                .printPrettyResponse()
+                ;
+        return clear(model.getResponse().findValue("ApiKey").toString());
+    }
+
+    public String getApiKeyCorporateTest() throws IOException {
+        Model model = new ModelBuilder()
+                .modelName("CorporateUserGeneral").calledMethod("getCorporateByLogin")
+                .addProperty("Login", "test_tech01")
+                .addProperty("Password", "123456")
+
+                .build()
+                .printPrettyRequest()
+
+                .run(test)
+                .printPrettyResponse()
+                ;
+        return clear(model.getResponse().findValue("ApiKey").toString());
+    }
+
     @Test
     void printApiKeyLoyaltyLive() throws IOException {
-        System.out.println(getApiKeyLoyalty());
+        System.out.println(getApiKeyLoyaltyLive());
     }
 
     @Test
     void printApiKeyCorporateLive() throws IOException {
-        System.out.println(getApiKeyCorporate());
+        System.out.println(getApiKeyCorporateLive());
+    }
+
+    @Test // Fender
+    void printApiKeyLoyaltyTest() throws IOException {
+        System.out.println(getApiKeyLoyaltyTest());
+    }
+
+    @Test
+    void printApiKeyCorporateTest() throws IOException {
+        System.out.println(getApiKeyCorporateTest());
     }
 
 // END OF API KEY ------------------------------------------------------------------------------------------------------

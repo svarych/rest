@@ -7,95 +7,61 @@ package api2.models.counterparties;
 import api2.service.ModelBuilder;
 
 /**
- * Создать Контрагента
- * Так же используется для создания контактного лица
+ * Создать Контактное лицо Контрагента
+ * Метод «save», работает в модели «ContactPerson», этот метод необходим для создания контактного лица
+ * контрагента отправителя/получателя.
  * <p>
- * Метод «save», работает в модели «Counterparty», этот метод используется при создании Контрагента получателя.
- * Все данные вносятся только на Украинском языке.
- * Рекомендуеться проводить обновление справочников раз в месяц.
+ * Редактировать данные контактного лица контрагента могут только юридические лица.
+ * Частные лица могут редактировать только телефон контактного лица контрагента.
+ * Редактировать данные контрагента можно только с момента его создания до момента создания ИД с ним.
  * <p>
  * Доступность: Требует использования API-ключа.
- * <p>
- * При створенні контрагента - фізичної особи, необхідно одночасно створити і контактну особбу, тому при стандартному
- * запиті отримуємо 2 об'єкти: крнтрагента (в даному випадку - "Фізична особа") та контактної особи -
- * (Рамамбахара Мамбу Рум)
- *
  */
-public final class CreateCounterParty extends ModelBuilder {
+public final class CreateContactPerson extends ModelBuilder {
 
-    public CreateCounterParty() {
+    public CreateContactPerson() {
         this
                 .apiKey("38d9f4c9c98686aca629634a245d7828")
                 .modelName("Counterparty")
                 .calledMethod("save")
 
-                .addProperty("CityRef", "db5c88d7-391c-11dd-90d9-001a92567626")
+                .addProperty("CounterpartyRef", "e2adaba0-1dc3-11e7-8ba8-005056881c6b")
                 .addProperty("FirstName", "Мамбу")
                 .addProperty("MiddleName", "Рум")
-                .addProperty("LastName", "Рамамбахара")
+                .addProperty("LastName", "Пуп")
                 .addProperty("Phone", "0997979789")
                 .addProperty("Email", "hara@mamba.rum")
-                .addProperty("CounterpartyType", "PrivatePerson")
-                .addProperty("CounterpartyProperty", "Recipient")
         ;
     }
 
     //----------------------------------------------------------------------------------------------------------------------
-    public CreateCounterParty cityRef(String cityRef) {
-        this.replaceProperty("CityRef", cityRef);
+    public CreateContactPerson counterpartyRef(String cityRef) {
+        this.replaceProperty("CounterpartyRef", cityRef);
         return this;
     }
 
-    public CreateCounterParty firstName(String firstName) {
+    public CreateContactPerson firstName(String firstName) {
         this.replaceProperty("FirstName", firstName);
         return this;
     }
 
-    public CreateCounterParty middleName(String middleName) {
+    public CreateContactPerson middleName(String middleName) {
         this.replaceProperty("MiddleName", middleName);
         return this;
     }
 
-    public CreateCounterParty lastName(String lastName) {
+    public CreateContactPerson lastName(String lastName) {
         this.replaceProperty("LastName", lastName);
         return this;
     }
 
-    public CreateCounterParty email(String email) {
+    public CreateContactPerson email(String email) {
         this.replaceProperty("Email", email);
         return this;
     }
 
-    public CreateCounterParty phone(String phone) {
+    public CreateContactPerson phone(String phone) {
         this.replaceProperty("Phone", phone);
         return this;
     }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-    /**
-     * PrivatePerson or Organization
-     */
-    enum form {
-        PrivatePerson, Organisation
-    }
-
-    public CreateCounterParty form(Enum form) {
-        this.replaceProperty("CounterpartyType", form);
-        return this;
-    }
-//----------------------------------------------------------------------------------------------------------------------
-
-    /**
-     * Sender or Recipient
-     */
-    enum type {
-        Sender, Recipient
-    }
-
-    public CreateCounterParty type(Enum type) {
-        this.replaceProperty("CounterpartyProperty", type);
-        return this;
-    }
-//----------------------------------------------------------------------------------------------------------------------
 }

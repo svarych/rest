@@ -13,12 +13,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class Tests {
 
     private Model model;
-    private String loyaltyApiKey = new Helper().getApiKeyLoyalty();
-    private String corporateApiKey = new Helper().getApiKeyCorporate();
+    private String loyaltyApiKey = new Helper().getApiKeyLoyaltyLive();
+    private String corporateApiKey = new Helper().getApiKeyCorporateLive();
 
     Tests() throws IOException {
     }
 
+    /**
+     * Створення контрагента-приватної особи із отримувачем (для лояльника)
+     */
     @Test
     @DisplayName("Create contact person for loyalty user")
     void createContactPersonLoyaltyTest() throws IOException {
@@ -26,10 +29,16 @@ class Tests {
         assertTrue(model.getResponse().findValue("Description").toString().contains("Приватна особа"));
     }
 
+    /**
+     * Створення контрагента-приватної особи із отримувачем (для корпората)
+     */
     @Test
     @DisplayName("Create contact person for corporate user")
     void createContactPersonCorporateTest() throws IOException {
         model = new CreateCounterParty().apiKey(corporateApiKey).build().printPrettyRequest().run().printPrettyResponse();
-        assertTrue(true);
+        assertTrue(model.getResponse().findValue("Description").toString().contains("Приватна особа"));
     }
+
+
+
 }
