@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="945b4af4-9a30-4bb4-9d7f-27e020cc6020" name="Default" comment="" />
+    <list default="true" id="945b4af4-9a30-4bb4-9d7f-27e020cc6020" name="Default" comment="Some updates and new tests. 03.03.2018 15:03">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/CreateCounterPartyAddress.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/DeleteCounterPartyAddress.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/EditCounterPartyAddress.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/GetCitiesOfCompany.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/GetGeographicalRegions.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/GetSettlementsUkraine.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/GetStreetsOfCompany.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/GetWarehouses.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/OnlineSearchSettlements.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/addresses/OnlineSearchStreets.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/counterparties/CreateCounterParty$form.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/counterparties/CreateCounterParty$type.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/counterparties/CreateCounterParty.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/internetDocument/CreateEW.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/internetDocument/CreateEWBackwardDelivery.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/internetDocument/CreateEWToAddress.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/internetDocument/DeleteEW.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/models/internetDocument/GetListEW.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/service/Connector$server.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/service/Connector.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/service/Helper.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/service/Model.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/api2/service/ModelBuilder.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/data/x.x" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/classes/properties/connection.properties" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/api2/Examples.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/api2/addresses/live/Tests.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/api2/addresses/test/Tests.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/api2/counterparties/live/Tests.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/api2/counterparties/test/Tests.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/api2/internetDocument/live/Tests.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/api2/internetDocument/test/Tests.class" afterPath="" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,61 +47,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Tests.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/api2/counterparties/live/Tests.java">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-              <folding>
-                <element signature="method#Tests#0;class#Tests#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tests.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/api2/addresses/live/Tests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding>
-                <element signature="method#searchSettlementsTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#searchStreetsOnSettlementTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#createCounterPartyAddressTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#editCounterPartyAddressTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#deleteCounterPartyAddressTest#0;class#Tests#0" expanded="false" />
-                <element signature="docComment;method#getCitiesOfCompanyTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#getCitiesOfCompanyTest#0;class#Tests#0" expanded="false" />
-                <element signature="docComment;method#getSettlementsUkraineTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#getSettlementsUkraineTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#getGeographicalRegionsTest#0;class#Tests#0" expanded="false" />
-                <element signature="docComment;method#getStreetsOfCompanyTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#getStreetsOfCompanyTest#0;class#Tests#0" expanded="false" />
-                <element signature="method#getWarehousesTest#0;class#Tests#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateCounterParty.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api2/models/counterparties/CreateCounterParty.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="11" column="2" lean-forward="false" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
+            <state relative-caret-position="0">
+              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Helper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/api2/service/Helper.java">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="915">
-              <caret line="75" column="46" lean-forward="false" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
-              <folding>
-                <element signature="e#1431#1432#0" expanded="true" />
-                <element signature="e#1511#1512#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -100,7 +96,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/api2/models/CreateEW.java" />
         <option value="$PROJECT_DIR$/src/test/java/api2/Testing.java" />
         <option value="$PROJECT_DIR$/src/main/java/api2/Helper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/data/x.x" />
@@ -151,6 +146,7 @@
         <option value="$PROJECT_DIR$/src/main/java/api2/service/Helper.java" />
         <option value="$PROJECT_DIR$/src/test/java/api2/counterparties/live/Tests.java" />
         <option value="$PROJECT_DIR$/src/main/java/api2/models/counterparties/CreateCounterParty.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -188,96 +184,6 @@
             <path>
               <item name="rest" type="b2602c69:ProjectViewProjectNode" />
               <item name="rest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api2" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="properties" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api2" type="462c0819:PsiDirectoryNode" />
-              <item name="addresses" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="api2" type="462c0819:PsiDirectoryNode" />
-              <item name="addresses" type="462c0819:PsiDirectoryNode" />
-              <item name="live" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -673,6 +579,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="0" width="1922" height="1081" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985386" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -683,7 +590,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6816284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2673426" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -726,14 +633,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/api2/service/ModelBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="42" column="35" lean-forward="false" selection-start-line="42" selection-start-column="35" selection-end-line="42" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/api2/Testing.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/api2/service/Model.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -901,11 +800,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="29" column="57" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="57" />
-          <folding>
-            <element signature="method#getAll#0;class#GetCitiesOfCompany#0" expanded="false" />
-            <element signature="method#byRef#0;class#GetCitiesOfCompany#0" expanded="false" />
-            <element signature="method#byName#0;class#GetCitiesOfCompany#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -913,6 +808,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="20" column="57" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -927,9 +823,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="25" column="57" lean-forward="false" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="57" />
-          <folding>
-            <element signature="method#byStreetName#0;class#GetStreetsOfCompany#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -944,12 +838,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="122">
           <caret line="31" column="57" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="57" />
-          <folding>
-            <element signature="method#byName#0;class#GetSettlementsUkraine#0" expanded="false" />
-            <element signature="method#withWarehouses#0;class#GetSettlementsUkraine#0" expanded="false" />
-            <element signature="method#page#0;class#GetSettlementsUkraine#0" expanded="false" />
-            <element signature="method#getAll#0;class#GetSettlementsUkraine#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -957,6 +846,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
           <caret line="27" column="57" lean-forward="false" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -993,30 +883,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="975">
           <caret line="170" column="57" lean-forward="false" selection-start-line="170" selection-start-column="57" selection-end-line="170" selection-end-column="57" />
-          <folding>
-            <element signature="method#loadProperties#0;class#Examples#0" expanded="false" />
-            <element signature="method#t000#0;class#Examples#0" expanded="false" />
-            <element signature="method#t001#0;class#Examples#0" expanded="false" />
-            <element signature="method#t002#0;class#Examples#0" expanded="false" />
-            <element signature="method#t003#0;class#Examples#0" expanded="false" />
-            <element signature="method#t004#0;class#Examples#0" expanded="false" />
-            <element signature="method#t005#0;class#Examples#0" expanded="false" />
-            <element signature="method#t006#0;class#Examples#0" expanded="false" />
-            <element signature="method#t007#0;class#Examples#0" expanded="false" />
-            <element signature="method#t008#0;class#Examples#0" expanded="false" />
-            <element signature="method#t009#0;class#Examples#0" expanded="false" />
-            <element signature="method#t010#0;class#Examples#0" expanded="false" />
-            <element signature="method#t011#0;class#Examples#0" expanded="false" />
-            <element signature="method#t012#0;class#Examples#0" expanded="false" />
-            <element signature="method#t013#0;class#Examples#0" expanded="false" />
-            <element signature="method#t14#0;class#Examples#0" expanded="false" />
-            <element signature="method#requestToTestServer#0;class#Examples#0" expanded="false" />
-            <element signature="method#getApiKey#0;class#Examples#0" expanded="false" />
-            <element signature="method#getApiKeyCorporateLiveTest#0;class#Examples#0" expanded="false" />
-            <element signature="method#getAllApiKeysLiveTest#0;class#Examples#0" expanded="false" />
-            <element signature="method#getAllApiKeysLiveTest2#0;class#Examples#0" expanded="false" />
-            <element signature="method#getEWTodayFromTestServer#0;class#Examples#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1024,10 +891,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="915">
           <caret line="75" column="46" lean-forward="false" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
-          <folding>
-            <element signature="e#1431#1432#0" expanded="true" />
-            <element signature="e#1511#1512#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1043,31 +907,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding>
-            <element signature="method#Tests#0;class#Tests#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/api2/addresses/live/Tests.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="method#searchSettlementsTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#searchStreetsOnSettlementTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#createCounterPartyAddressTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#editCounterPartyAddressTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#deleteCounterPartyAddressTest#0;class#Tests#0" expanded="false" />
-            <element signature="docComment;method#getCitiesOfCompanyTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#getCitiesOfCompanyTest#0;class#Tests#0" expanded="false" />
-            <element signature="docComment;method#getSettlementsUkraineTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#getSettlementsUkraineTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#getGeographicalRegionsTest#0;class#Tests#0" expanded="false" />
-            <element signature="docComment;method#getStreetsOfCompanyTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#getStreetsOfCompanyTest#0;class#Tests#0" expanded="false" />
-            <element signature="method#getWarehousesTest#0;class#Tests#0" expanded="false" />
-          </folding>
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
