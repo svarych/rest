@@ -38,4 +38,56 @@ public final class CreateEW extends ModelBuilder {
                 .addProperty("ContactRecipient", "fd46f2d7-00e8-11e8-8b24-005056881c6b")
                 .addProperty("RecipientsPhone", "380777777777");
     }
+
+    public CreateEW sender(String senderRef) {
+        this.replaceProperty("Sender", senderRef);
+        return this;
+    }
+
+    public CreateEW citySender(String cityRef) {
+        this.replaceProperty("CitySender", cityRef);
+        return this;
+    }
+
+    public CreateEW addressSender(String senderAddressRef) {
+        this.replaceProperty("SenderAddress", senderAddressRef);
+        return this;
+    }
+
+    public CreateEW contactSender(String contactSenderRef) {
+        this.replaceProperty("ContactSender", contactSenderRef);
+        return this;
+    }
+
+    public CreateEW phoneSender(String phoneSender) {
+        this.replaceProperty("SendersPhone", phoneSender);
+        return this;
+    }
+
+//    ------------------------------------------------------------
+
+    public CreateEW recipient(String recipientRef) {
+        this.replaceProperty("Recipient", recipientRef);
+        return this;
+    }
+
+    public CreateEW cityRecipient(String cityRecipientRef) {
+        this.replaceProperty("CityRecipient", cityRecipientRef);
+        return this;
+    }
+
+    public CreateEW addressRecipient(String addressRecipientRef) {
+        this.replaceProperty("RecipientAddress", addressRecipientRef);
+        return this;
+    }
+
+    public CreateEW contactRecipient(String contactRecipientRef) {
+        this.replaceProperty("ContactRecipient", contactRecipientRef);
+        return this;
+    }
+
+    public CreateEW phoneRecipient(String phoneRecipient) {
+        this.replaceProperty("RecipientsPhone", phoneRecipient);
+        return this;
+    }
 }

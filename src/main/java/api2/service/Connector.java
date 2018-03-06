@@ -1,5 +1,6 @@
 package api2.service;
 
+import api2.service.enums.Server;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -9,8 +10,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Properties;
 
-import static api2.service.Connector.server.live;
-import static api2.service.Connector.server.test;
+import static api2.service.enums.Server.LIVE;
+import static api2.service.enums.Server.TEST;
 
 public class Connector {
 
@@ -28,17 +29,15 @@ public class Connector {
         properties.load(configFile);
     }
 
-    public enum server {
-        live, test
-    }
 
-    public void send(String request, Enum... server) throws IOException {
+
+    public void send(String request, Server... server) throws IOException {
         if (server.length > 0) {
-            for (Enum s : server) {
-                if (s.equals(live)) {
+            for (Server s : server) {
+                if (s.equals(LIVE)) {
                     runOnLive(request);
                 }
-                if (s.equals(test)) {
+                if (s.equals(TEST)) {
                     runOnTest(request);
                 }
             }

@@ -5,6 +5,7 @@ import api2.service.Connector;
 import api2.service.Helper;
 import api2.service.Model;
 import api2.service.ModelBuilder;
+import api2.service.enums.UserType;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -13,8 +14,8 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.util.Properties;
 
-import static api2.service.Connector.server.live;
-import static api2.service.Connector.server.test;
+import static api2.service.enums.Server.LIVE;
+import static api2.service.enums.Server.TEST;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Examples {
@@ -26,6 +27,17 @@ class Examples {
     static void loadProperties() throws IOException {
         InputStream configFile = new FileInputStream("./src/main/resources/properties/connection.properties");
         properties.load(configFile);
+    }
+
+    @Test
+    @DisplayName("enum test")
+    void enumTest() {
+        UserType user = UserType.ORGANIZATION;
+        String s = user.toString();
+        System.out.println(s);
+        for (UserType type : UserType.values()) {
+            System.out.printf("%s ", type);
+        }
     }
 
     @Test
@@ -152,7 +164,7 @@ class Examples {
                 .calledMethod("getWarehouses")
                 .addProperty("CityName", "Рахів")
                 .build().printPrettyRequest()
-                .run(live).printPrettyResponse()
+                .run(LIVE).printPrettyResponse()
         ;
     }
 
@@ -162,7 +174,7 @@ class Examples {
                 .addProperty("Login", "test_tech01")
                 .addProperty("Password", "123456")
                 .build().printRequest()
-                .run(test)
+                .run(TEST)
                 .printPrettyResponse();
     }
 
@@ -173,7 +185,7 @@ class Examples {
                 .addProperty("Login", "50cdd")
                 .addProperty("Password", "1234")
                 .build().printRequest()
-                .run(live)
+                .run(LIVE)
                 .printPrettyResponse();
     }
 
@@ -183,7 +195,7 @@ class Examples {
         new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
                 .apiKey("38d9f4c9c98686aca629634a245d7828")
                 .build().printRequest()
-                .run(live)
+                .run(LIVE)
                 .printPrettyResponse();
     }
 
@@ -193,14 +205,15 @@ class Examples {
         new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
                 .apiKey("39c9b0a6cecf2a4368ee83abfaa7f597")
                 .build().printRequest()
-                .run(live)
+                .run(LIVE)
                 .printPrettyResponse();
     }
 
     @Test
     @DisplayName("Get list of Today created EW`s from test server")
     void getEWTodayFromTestServer() throws IOException {
-        model = new GetListEW().getTodayList().apiKey(properties.getProperty("apiKey.test")).build().run(test);
+        model = new GetListEW().getTodayList().apiKey(properties.getProperty("apiKey.test")).build().run(TEST);
         System.out.println(model.getResponse().findValues("IntDocNumber"));
     }
+
 }

@@ -22,15 +22,15 @@ public final class CreateContactPerson extends ModelBuilder {
     public CreateContactPerson() {
         this
                 .apiKey("38d9f4c9c98686aca629634a245d7828")
-                .modelName("Counterparty")
+                .modelName("ContactPerson")
                 .calledMethod("save")
 
-                .addProperty("CounterpartyRef", "e2adaba0-1dc3-11e7-8ba8-005056881c6b")
-                .addProperty("FirstName", "Мамбу")
-                .addProperty("MiddleName", "Рум")
-                .addProperty("LastName", "Пуп")
+                .addProperty("CounterpartyRef", "aa188fd1-75f1-11e7-8ba8-005056881c6b")
+                .addProperty("FirstName", "Бульдозер")
+                .addProperty("MiddleName", "Тракторович")
+                .addProperty("LastName", "Силач")
                 .addProperty("Phone", "0997979789")
-                .addProperty("Email", "hara@mamba.rum")
+                .addProperty("Email", "dozer@strong.com")
         ;
     }
 

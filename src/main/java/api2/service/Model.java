@@ -1,5 +1,7 @@
 package api2.service;
 
+import api2.service.enums.Server;
+import api2.service.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -76,7 +78,7 @@ public class Model {
         return this;
     }
 
-    public Model run(Enum server) throws IOException {
+    public Model run(Server server) throws IOException {
         connector.send(getRequest(), server);
         printWarnings();
         printErrors();
