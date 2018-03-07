@@ -1,11 +1,11 @@
-package api2;
+package api2.examples;
 
 import api2.models.internetDocument.*;
 import api2.service.Connector;
 import api2.service.Helper;
 import api2.service.Model;
 import api2.service.ModelBuilder;
-import api2.service.enums.UserType;
+import api2.service.enums.OwnershipForm;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -32,10 +32,10 @@ class Examples {
     @Test
     @DisplayName("enum test")
     void enumTest() {
-        UserType user = UserType.ORGANIZATION;
+        OwnershipForm user = OwnershipForm.ORGANIZATION;
         String s = user.toString();
         System.out.println(s);
-        for (UserType type : UserType.values()) {
+        for (OwnershipForm type : OwnershipForm.values()) {
             System.out.printf("%s ", type);
         }
     }
@@ -207,6 +207,34 @@ class Examples {
                 .build().printRequest()
                 .run(LIVE)
                 .printPrettyResponse();
+    }
+
+    @Test
+    @DisplayName("Get all Api-keys for user by any one key (corporate test)")
+    void getAllApiKeysTestServerCorporateTest() throws IOException {
+        model = new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
+                .apiKey(new Helper().getApiKeyCorporateTest())
+                .build().printRequest()
+                .run(TEST)
+                .printPrettyResponse()
+        ;
+
+        System.out.println(model.getResponse().findValues("ExpireDate"));
+
+
+    }
+
+    @Test
+    @DisplayName("Get all Api-keys for user by any one key (loyalty test)")
+    void getAllApiKeysTestServerLoyaltyTest() throws IOException {
+        model = new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
+                .apiKey(new Helper().getApiKeyLoyaltyTest())
+                .build().printRequest()
+                .run(TEST)
+                .printPrettyResponse()
+        ;
+
+        System.out.println(model.getResponse().findValues("ExpireDate"));
     }
 
     @Test

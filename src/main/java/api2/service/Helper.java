@@ -4,6 +4,7 @@ import api2.service.enums.KeyType;
 import api2.service.enums.Server;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class Helper {
     public LocalDateTime getCurrentDate() {
         return currentDate;
     }
+
 // END OF DATE TIME ----------------------------------------------------------------------------------------------------
 
     // API KEY ---------------------------------------------------------------------------------------------------------
@@ -53,7 +55,6 @@ public class Helper {
     private String clear(String input) {
         return input.replace("\"", "").replace("[", "").replace("]", "");
     }
-
 
     public String getApiKeyLoyaltyLive() throws IOException {
         Model model = new ModelBuilder()
@@ -97,7 +98,8 @@ public class Helper {
         Model model = new ModelBuilder()
                 .modelName("LoyaltyUser").calledMethod("getLoyaltyUserByLogin")
                 .addProperty("Login", "alexxxvunet@mail.ru")
-                .addProperty("Password", "Hahl0Doo")
+//                .addProperty("Password", "Hahl0Doo")
+                .addProperty("Password", "123456")
                 .build()
                 .printPrettyRequest()
                 .run(TEST);
@@ -115,7 +117,6 @@ public class Helper {
     }
 
     @Test
-        // Fender
     void printApiKeyLoyaltyTest() throws IOException {
         System.out.println(getApiKeyLoyaltyTest());
     }
@@ -161,6 +162,7 @@ public class Helper {
     }
 
     @Test
+    @DisplayName("Get all api keys for user by one any key")
     void getAllKeys() throws IOException {
         System.out.println(getAllApiKeysForUser("8f7e235f0afe315e2e81e10ac9d5c914", EMPTY, LIVE));
     }
