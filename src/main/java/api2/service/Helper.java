@@ -52,8 +52,11 @@ public class Helper {
 
     // API KEY ---------------------------------------------------------------------------------------------------------
 
-    private String clear(String input) {
-        return input.replace("\"", "").replace("[", "").replace("]", "");
+    public String clear(String input) {
+        return input
+                .replace("\"", "")
+                .replace("[", "")
+                .replace("]", "");
     }
 
     public String getApiKeyLoyaltyLive() throws IOException {

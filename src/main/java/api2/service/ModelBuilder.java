@@ -3,7 +3,6 @@ package api2.service;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 
-
 public class ModelBuilder {
 
     private Helper helper = new Helper();
