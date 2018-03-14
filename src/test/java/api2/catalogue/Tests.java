@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static api2.service.enums.Server.TEST;
+
 class Tests {
 
     private Model model;

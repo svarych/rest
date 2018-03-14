@@ -29,8 +29,6 @@ public class Connector {
         properties.load(configFile);
     }
 
-
-
     public void send(String request, Server... server) throws IOException {
         if (server.length > 0) {
             for (Server s : server) {
