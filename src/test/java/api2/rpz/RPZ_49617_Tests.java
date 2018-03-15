@@ -57,7 +57,7 @@ class RPZ_49617_Tests {
     }
 
     private String requestForRegistry(UserType userType, Format format) throws IOException {
-        if (userType.equals(CORPORATE_TEST)) {
+        if (userType == CORPORATE_TEST) {
             model = new GetRegistryList().user(CORPORATE_TEST).build().run(TEST);
 
             return "https://webclient.sb.np.ua/scanSheet/printScanSheet/refs[]/"
@@ -65,21 +65,21 @@ class RPZ_49617_Tests {
                     + "/type/" + format + "/apiKey/"
                     + properties.getProperty("corporate.test");
         }
-        if (userType.equals(UserType.LOYALTY_TEST)) {
+        if (userType == UserType.LOYALTY_TEST) {
             model = new GetRegistryList().user(UserType.LOYALTY_TEST).build().run(TEST);
             return "https://webclient.sb.np.ua/scanSheet/printScanSheet/refs[]/"
                     + clean(model.getResponse().findValue("Ref").toString())
                     + "/type/" + format + "/apiKey/"
                     + properties.getProperty("loyalty.test");
         }
-        if (userType.equals(UserType.CORPORATE_LIVE)) {
+        if (userType == UserType.CORPORATE_LIVE) {
             model = new GetRegistryList().user(UserType.CORPORATE_LIVE).build().run(LIVE);
             return "https://my.novaposhta.ua/scanSheet/printScanSheet/refs[]/"
                     + clean(model.getResponse().findValue("Ref").toString())
                     + "/type/" + format + "/apiKey/"
                     + properties.getProperty("corporate.live");
         }
-        if (userType.equals(UserType.LOYALTY_LIVE)) {
+        if (userType == UserType.LOYALTY_LIVE) {
             model = new GetRegistryList().user(UserType.LOYALTY_LIVE).build().run(LIVE);
             return "https://my.novaposhta.ua/scanSheet/printScanSheet/refs[]/"
                     + clean(model.getResponse().findValue("Ref").toString())
@@ -89,12 +89,12 @@ class RPZ_49617_Tests {
     }
 
     private String requestForEW(UserType userType, Format format) throws IOException {
-        if (userType.equals(CORPORATE_TEST)) {
+        if (userType == CORPORATE_TEST) {
             System.out.print("Corporate test");
-            if (format.equals(PDF)){
+            if (format == PDF) {
                 System.out.println(" PDF");
             }
-            if (format.equals(HTML)){
+            if (format == HTML) {
                 System.out.println(" HTML");
             }
             model = new GetListEW().user(CORPORATE_TEST).build().run(TEST);
@@ -103,12 +103,12 @@ class RPZ_49617_Tests {
                     + "/type/" + format + "/apiKey/"
                     + properties.getProperty("corporate.test");
         }
-        if (userType.equals(UserType.LOYALTY_TEST)) {
+        if (userType == UserType.LOYALTY_TEST) {
             System.out.print("Loyalty test");
-            if (format.equals(PDF)){
+            if (format == PDF) {
                 System.out.println(" PDF");
             }
-            if (format.equals(HTML)){
+            if (format == HTML) {
                 System.out.println(" HTML");
             }
             model = new GetListEW().user(UserType.LOYALTY_TEST).build().run(TEST);
@@ -117,13 +117,13 @@ class RPZ_49617_Tests {
                     + "/type/" + format + "/apiKey/"
                     + properties.getProperty("loyalty.test");
         }
-        if (userType.equals(UserType.CORPORATE_LIVE)) {
+        if (userType == UserType.CORPORATE_LIVE) {
             model = new GetListEW().user(UserType.CORPORATE_LIVE).build().run(LIVE);
             System.out.print("Corporate live");
-            if (format.equals(PDF)){
+            if (format == PDF) {
                 System.out.println(" PDF");
             }
-            if (format.equals(HTML)){
+            if (format == HTML) {
                 System.out.println(" HTML");
             }
             return "https://my.novaposhta.ua/orders/printDocument/orders[]/"
@@ -131,12 +131,12 @@ class RPZ_49617_Tests {
                     + "/type/" + format + "/apiKey/"
                     + properties.getProperty("corporate.live");
         }
-        if (userType.equals(UserType.LOYALTY_LIVE)) {
+        if (userType == UserType.LOYALTY_LIVE) {
             System.out.print("Loyalty live");
-            if (format.equals(PDF)){
+            if (format == PDF) {
                 System.out.println(" PDF");
             }
-            if (format.equals(HTML)){
+            if (format == HTML) {
                 System.out.println(" HTML");
             }
             model = new GetListEW().user(UserType.LOYALTY_LIVE).build().run(LIVE);

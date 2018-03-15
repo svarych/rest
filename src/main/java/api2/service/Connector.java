@@ -32,10 +32,10 @@ public class Connector {
     public void send(String request, Server... server) throws IOException {
         if (server.length > 0) {
             for (Server s : server) {
-                if (s.equals(LIVE)) {
+                if (s == LIVE) {
                     runOnLive(request);
                 }
-                if (s.equals(TEST)) {
+                if (s == TEST) {
                     runOnTest(request);
                 }
             }

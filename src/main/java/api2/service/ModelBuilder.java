@@ -70,4 +70,13 @@ public class ModelBuilder {
     public LinkedHashMap<String, Object> getMethodProperties() {
         return methodProperties;
     }
+
+    public String clear(String s) {
+        return s
+                .replace("\"", "")
+                .replace("[", "")
+                .replace("]", "")
+                ;
+
+    }
 }

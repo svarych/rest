@@ -4,22 +4,19 @@
 
 package api2.models.counterparties;
 
+import api2.service.Model;
 import api2.service.ModelBuilder;
 
+import java.io.IOException;
+
 /**
- * Создать Контрагента
- * Так же используется для создания контактного лица
+ * Создать Контрагента с типом (юридическое лицо) или организацию
+ * Метод «save», работает в модели «Counterparty», этот метод используется при создании Контрагента с типом
+ * (юридическое лицо) или организация. Рекомендуется проводить обновление справочников раз в месяц.
  * <p>
- * Метод «save», работает в модели «Counterparty», этот метод используется при создании Контрагента получателя.
- * Все данные вносятся только на Украинском языке.
- * Рекомендуеться проводить обновление справочников раз в месяц.
+ * При создании организация поля: MiddleName, LastName, Phone, Email не обязательны!
  * <p>
  * Доступность: Требует использования API-ключа.
- * <p>
- * При створенні контрагента - фізичної особи, необхідно одночасно створити і контактну особбу, тому при стандартному
- * запиті отримуємо 2 об'єкти: крнтрагента (в даному випадку - "Фізична особа") та контактної особи -
- * (Рамамбахара Мамбу Рум)
- *
  */
 public final class CreateCounterParty extends ModelBuilder {
 
@@ -30,72 +27,46 @@ public final class CreateCounterParty extends ModelBuilder {
                 .calledMethod("save")
 
                 .addProperty("CityRef", "db5c88d7-391c-11dd-90d9-001a92567626")
-                .addProperty("FirstName", "Мамбу")
-                .addProperty("MiddleName", "Рум")
-                .addProperty("LastName", "Рамамбахара")
-                .addProperty("Phone", "0997979789")
-                .addProperty("Email", "hara@mamba.rum")
-                .addProperty("CounterpartyType", "PrivatePerson")
+                .addProperty("FirstName", "Супер фірма")
+                .addProperty("CounterpartyType", "Organization")
                 .addProperty("CounterpartyProperty", "Recipient")
+                .addProperty("OwnershipForm", "7f0f351d-2519-11df-be9a-000c291af1b3")
         ;
     }
 
-    //----------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------
+
     public CreateCounterParty cityRef(String cityRef) {
         this.replaceProperty("CityRef", cityRef);
         return this;
     }
 
-    public CreateCounterParty firstName(String firstName) {
+    public CreateCounterParty name(String firstName) {
         this.replaceProperty("FirstName", firstName);
         return this;
     }
 
-    public CreateCounterParty middleName(String middleName) {
-        this.replaceProperty("MiddleName", middleName);
+    public CreateCounterParty form(String ref) {
+        this.replaceProperty("OwnershipForm", ref);
         return this;
     }
 
-    public CreateCounterParty lastName(String lastName) {
-        this.replaceProperty("LastName", lastName);
+    public CreateCounterParty city(String ref) {
+        this.replaceProperty("CityRef", ref);
         return this;
     }
 
-    public CreateCounterParty email(String email) {
-        this.replaceProperty("Email", email);
+    public CreateCounterParty printCityRefByName(String name) throws IOException {
+        Model model = new ModelBuilder().apiKey(getApiKey()).modelName("Address").calledMethod("getCities").addProperty("FindByString", name)
+                .build().run();
+        System.out.println("Ref: " + clear(model.getResponse().findValues("Ref").toString()));
         return this;
     }
 
-    public CreateCounterParty phone(String phone) {
-        this.replaceProperty("Phone", phone);
+    public CreateCounterParty printCurrentCity() throws IOException {
+        Model model = new ModelBuilder().apiKey(getApiKey()).modelName("Address").calledMethod("getCities").addProperty("Ref", getMethodProperties().get("CityRef"))
+                .build().run();
+        System.out.println("Поточне місто: " + clear(model.getResponse().findValue("Description").toString()));
         return this;
     }
-
-//----------------------------------------------------------------------------------------------------------------------
-
-    /**
-     * PrivatePerson or Organization
-     */
-    enum form {
-        PrivatePerson, Organisation
-    }
-
-    public CreateCounterParty form(Enum form) {
-        this.replaceProperty("CounterpartyType", form);
-        return this;
-    }
-//----------------------------------------------------------------------------------------------------------------------
-
-    /**
-     * Sender or Recipient
-     */
-    enum type {
-        Sender, Recipient
-    }
-
-    public CreateCounterParty type(Enum type) {
-        this.replaceProperty("CounterpartyProperty", type);
-        return this;
-    }
-//----------------------------------------------------------------------------------------------------------------------
 }

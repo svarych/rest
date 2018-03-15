@@ -39,17 +39,17 @@ public final class GetRegistryList extends ModelBuilder {
 
 //----------------------------------------------------------------------------------------------------------------------
 
-    public GetRegistryList user(UserType userType){
-        if (userType.equals(UserType.CORPORATE_LIVE)){
+    public GetRegistryList user(UserType userType) {
+        if (userType == UserType.CORPORATE_LIVE) {
             this.apiKey(properties.getProperty("corporate.live"));
         }
-        if (userType.equals(UserType.CORPORATE_TEST)){
+        if (userType == UserType.CORPORATE_TEST) {
             this.apiKey(properties.getProperty("corporate.test"));
         }
-        if (userType.equals(UserType.LOYALTY_LIVE)){
+        if (userType == UserType.LOYALTY_LIVE) {
             this.apiKey(properties.getProperty("loyalty.live"));
         }
-        if (userType.equals(UserType.LOYALTY_TEST)){
+        if (userType == UserType.LOYALTY_TEST) {
             this.apiKey(properties.getProperty("loyalty.test"));
         }
         return this;
