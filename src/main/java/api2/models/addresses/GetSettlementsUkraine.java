@@ -50,6 +50,16 @@ public final class GetSettlementsUkraine extends ModelBuilder {
                 .removeProperty("Ref")
                 .removeProperty("RegionRef")
 
+                .addProperty("FindByDirectString", name);
+        return this;
+    }
+
+    public GetSettlementsUkraine byNamePart(String name) {
+        this
+                .removeProperty("AreaRef")
+                .removeProperty("Ref")
+                .removeProperty("RegionRef")
+
                 .addProperty("FindByString", name);
         return this;
     }
