@@ -19,12 +19,12 @@ public final class CreateEW extends ModelBuilder {
                 .addProperty("PaymentMethod", "Cash")
                 .addProperty("DateTime", getHelper().getToday())
                 .addProperty("CargoType", "Parcel")
-                .addProperty("VolumeGeneral", "0.1")
+                .addProperty("VolumeGeneral", "0.01")
                 .addProperty("Weight", "10")
                 .addProperty("ServiceType", "WarehouseDoors")
                 .addProperty("SeatsAmount", "1")
-                .addProperty("Description", "пилосос")
-                .addProperty("Cost", "450")
+                .addProperty("Description", "Бджоли")
+                .addProperty("Cost", "124")
 
                 .addProperty("Sender", "aa036fd8-75f1-11e7-8ba8-005056881c6b")
                 .addProperty("CitySender", "db5c88d0-391c-11dd-90d9-001a92567626")
@@ -38,6 +38,8 @@ public final class CreateEW extends ModelBuilder {
                 .addProperty("ContactRecipient", "fd46f2d7-00e8-11e8-8b24-005056881c6b")
                 .addProperty("RecipientsPhone", "380777777777");
     }
+
+//    ------------------------------------------------------------------------------------------------------------------
 
     public CreateEW sender(String senderRef) {
         this.replaceProperty("Sender", senderRef);
@@ -64,7 +66,7 @@ public final class CreateEW extends ModelBuilder {
         return this;
     }
 
-//    ------------------------------------------------------------
+//    ------------------------------------------------------------------------------------------------------------------
 
     public CreateEW recipient(String recipientRef) {
         this.replaceProperty("Recipient", recipientRef);

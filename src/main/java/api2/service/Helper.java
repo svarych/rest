@@ -2,6 +2,7 @@ package api2.service;
 
 import api2.service.enums.KeyType;
 import api2.service.enums.Server;
+import api2.service.enums.UserType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.DisplayName;
@@ -115,7 +116,9 @@ public class Helper {
                 .addProperty("Login", login)
                 .addProperty("Password", password)
                 .build()
-                .run(server);
+                .printPrettyRequest()
+                .run(server)
+                .printPrettyResponse();
         return clear(model.getResponse().findValue("ApiKey").toString());
     }
 

@@ -59,6 +59,15 @@
             <version>2.9.3</version>
         </dependency>
 
+        <!--TEST REPORTING-->
+        <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.allure/allure-maven-plugin -->
+        <dependency>
+            <groupId>ru.yandex.qatools.allure</groupId>
+            <artifactId>allure-maven-plugin</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

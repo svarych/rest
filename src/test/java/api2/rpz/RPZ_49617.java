@@ -20,12 +20,12 @@ import static api2.service.enums.Server.TEST;
 import static api2.service.enums.UserType.CORPORATE_TEST;
 import static api2.service.enums.UserType.LOYALTY_TEST;
 
-class RPZ_49617_Tests {
+class RPZ_49617 {
 
     private Model model;
     private Properties properties = new Properties();
 
-    RPZ_49617_Tests() throws IOException {
+    RPZ_49617() throws IOException {
         InputStream configFile = new FileInputStream("./src/main/resources/properties/keys.properties");
         properties.load(configFile);
     }

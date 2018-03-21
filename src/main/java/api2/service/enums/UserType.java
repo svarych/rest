@@ -5,7 +5,10 @@ public enum UserType {
     LOYALTY_LIVE,
 
     CORPORATE_TEST,
-    LOYALTY_TEST;
+    LOYALTY_TEST,
+
+    LOYALTY,
+    CORPORATE;
 
     @Override
     public String toString() {

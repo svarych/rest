@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-class RPZ_49743_Tests extends RPZ {
+class RPZ_49743 extends RPZ {
 
-    RPZ_49743_Tests() {
+    RPZ_49743() {
 //        load_config("keys.properties");
     }
 

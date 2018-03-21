@@ -13,7 +13,7 @@ import java.util.LinkedHashMap;
 
 import static api2.service.enums.Server.TEST;
 
-class RPZ_49618_Tests {
+class RPZ_49618 {
 
     private Model model;
 
