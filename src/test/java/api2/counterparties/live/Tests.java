@@ -27,7 +27,7 @@ class Tests {
     /**
      * Створення контрагента-приватної особи та отримувача (для корпората)
      */
-//    @Test
+    @Test
     @DisplayName("Create counterparty with contact person for corporate user")
     void createContactPersonCorporateTest() throws IOException {
         model = new CreateCounterPartyWithCP().apiKey(new Helper().getApiKeyCorporateLive()).build().printPrettyRequest().run().printPrettyResponse();

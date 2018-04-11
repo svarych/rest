@@ -1,7 +1,7 @@
 package api2.service.enums;
 
 public enum Server {
-    LIVE, TEST;
+    LIVE, MY2, TEST;
 
 
     @Override

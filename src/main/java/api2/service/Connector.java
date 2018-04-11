@@ -10,8 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Properties;
 
-import static api2.service.enums.Server.LIVE;
-import static api2.service.enums.Server.TEST;
+import static api2.service.enums.Server.*;
 
 public class Connector {
 
@@ -38,6 +37,9 @@ public class Connector {
                 if (s == TEST) {
                     runOnTest(request);
                 }
+                if (s == MY2) {
+                    runOnMy2(request);
+                }
             }
         } else {
             runOnLive(request);
@@ -53,6 +55,9 @@ public class Connector {
         this.prettyResponse = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(this.response);
     }
 
+    /**
+     * Do refactor for clean using same code
+     */
     private void runOnLive(String request) throws IOException {
         url = new URL(properties.getProperty("url.live"));
         HttpsURLConnection https = (HttpsURLConnection) url.openConnection();
@@ -87,6 +92,27 @@ public class Connector {
         out.close();
 
         in = new BufferedReader(new InputStreamReader(http.getInputStream()));
+    }
+
+    /**
+     * Do refactor for clean using same code
+     */
+    private void runOnMy2(String request) throws IOException {
+        url = new URL(properties.getProperty("url.my2"));
+        HttpsURLConnection https = (HttpsURLConnection) url.openConnection();
+
+        https.setDoOutput(true);
+        https.setRequestMethod(properties.getProperty("requestMethod"));
+
+        String USER_AGENT = properties.getProperty("userAgent");
+        https.setRequestProperty("User-Agent", USER_AGENT);
+
+        out = new BufferedWriter(new OutputStreamWriter(https.getOutputStream(), "UTF-8"));
+        out.write(request);
+        out.flush();
+        out.close();
+
+        in = new BufferedReader(new InputStreamReader(https.getInputStream()));
     }
 
     public String getPrettyResponse() {
