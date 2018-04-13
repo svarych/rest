@@ -19,7 +19,7 @@ class RPZ_50572 {
     private Model model;
 
     @Test
-    @DisplayName("Common->sendPollAnswer")
+    @DisplayName("Common->sendPollAnswer - RPZ-46205")
     void commonSendPollAnswer() throws IOException {
         model = new ModelBuilder()
                 .apiKey("e810e6e4283d33db4d2f016a7d406e66")
@@ -30,7 +30,7 @@ class RPZ_50572 {
 //                .addProperty("ClientType", "Sender") // - Не обов'язкове
 //                .addProperty("Mark", "5") // - Не обов'язкове
 //                .addProperty("Comment", "Николайченко") // - Не обов'язкове
-//                .addProperty("Ref", "259c0f00-3286-11e8-ad11-005056886752") //todo
+//                .addProperty("Ref", "259c0f00-3286-11e8-ad11-005056886752") //todo RPZ-50572
                 .build().run(Server.TEST).printPrettyRequest().printPrettyResponse();
 
         assertTrue(model.getResponse().get("success").asBoolean());
