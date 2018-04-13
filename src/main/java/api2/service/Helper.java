@@ -3,6 +3,7 @@ package api2.service;
 import api2.service.enums.KeyType;
 import api2.service.enums.Server;
 import api2.service.enums.UserType;
+import com.codeborne.selenide.Configuration;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +16,10 @@ import java.time.format.DateTimeFormatter;
 import static api2.service.enums.KeyType.EMPTY;
 import static api2.service.enums.Server.LIVE;
 import static api2.service.enums.Server.TEST;
+import static com.codeborne.selenide.Selectors.byName;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class Helper {
 
@@ -110,16 +115,35 @@ public class Helper {
         return clear(model.getResponse().findValue("ApiKey").toString());
     }
 
-    public String getApiKey(String login, String password, Server server) throws IOException {
-        Model model = new ModelBuilder()
-                .modelName("LoyaltyUser").calledMethod("getLoyaltyUserByLogin")
-                .addProperty("Login", login)
-                .addProperty("Password", password)
-                .build()
-                .printPrettyRequest()
-                .run(server)
-                .printPrettyResponse();
-        return clear(model.getResponse().findValue("ApiKey").toString());
+    public String getApiKey(UserType userType, String login, String password, Server server) throws IOException {
+        Model model = null;
+        if (userType == UserType.LOYALTY) {
+            model = new ModelBuilder()
+                    .modelName("LoyaltyUser").calledMethod("getLoyaltyUserByLogin")
+                    .addProperty("Login", login)
+                    .addProperty("Password", password)
+                    .build()
+//                    .printPrettyRequest()
+                    .run(server)
+//                    .printPrettyResponse()
+            ;
+        }
+
+        if (userType == UserType.CORPORATE) {
+            model = new ModelBuilder()
+                    .modelName("CorporateUserGeneral").calledMethod("getCorporateByLogin")
+                    .addProperty("Login", login)
+                    .addProperty("Password", password)
+                    .build()
+//                    .printPrettyRequest()
+                    .run(server)
+//                    .printPrettyResponse()
+            ;
+        }
+
+        if (model != null) {
+            return clear(model.getResponse().findValue("ApiKey").toString());
+        } else return null;
     }
 
     @Test
@@ -174,5 +198,66 @@ public class Helper {
     }
 
 // END OF API KEY ------------------------------------------------------------------------------------------------------
+
+
+    /**
+     * Протестовано на тестовому сервері
+     */
+
+    public String getApiKeyOfUserByEWNumber(String number, Server server) throws IOException {
+        Configuration.browser = "phantomjs";
+        if (server == Server.TEST) {
+            open("http://webclient.sb.np.ua");
+            $("#LoginForm_username").setValue("rozetka.ua");
+            $("#LoginForm_password").setValue("Hahl0Doo").pressEnter();
+            open("http://webclient.sb.np.ua/admin/getDocument");
+        }
+
+        if (server == Server.LIVE) {
+            open("https://my.novaposhta.ua/auth");
+            $("#LoginForm_username").setValue("admin@oboi.ua");
+            $("#LoginForm_password").setValue("AntiLitvinHahl0Doo").pressEnter();
+            open("https://my.novaposhta.ua/admin/getDocument");
+        }
+
+        if (server == Server.MY2) {
+            open("https://my2.novaposhta.ua/auth");
+            $("#LoginForm_username").setValue("admin@oboi.ua");
+            $("#LoginForm_password").setValue("AntiLitvinHahl0Doo").pressEnter();
+            open("https://my2.novaposhta.ua/admin/getDocument");
+        }
+
+        $(byName("document")).setValue(number).pressEnter();
+        String fullString = $(byXpath("//td[contains(text(),'VIPUser')]/..//a")).getText();
+
+        String userName = fullString.split(" ", 0)[0];
+
+        String apiKey = null;
+
+        if (server == Server.TEST) {
+            try {
+                apiKey = getApiKey(UserType.CORPORATE, userName, "654321", Server.TEST);
+            } catch (Exception e) {
+                e.printStackTrace();
+                apiKey = getApiKey(UserType.LOYALTY, userName, "654321", Server.TEST);
+            }
+        }
+
+        if (server == Server.LIVE || server == Server.MY2) {
+            try {
+                apiKey = getApiKey(UserType.CORPORATE, userName, "AntiLitvinHahl0Doo", server);
+            } catch (Exception e) {
+                e.printStackTrace();
+                apiKey = getApiKey(UserType.LOYALTY, userName, "AntiLitvinHahl0Doo", server);
+            }
+        }
+
+        return apiKey;
+    }
+
+    @Test
+    void site() throws IOException {
+        System.out.println(getApiKeyOfUserByEWNumber("20600000067700", Server.TEST));
+    }
 
 }

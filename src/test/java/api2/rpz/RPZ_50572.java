@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 /**
  * RPZ-50572
  */
@@ -17,74 +19,49 @@ class RPZ_50572 {
     private Model model;
 
     @Test
-    @DisplayName("Расширения канала опроса удовлетворённости клиентов через мобильное приложения")
-    void mobile0() throws IOException {
+    @DisplayName("Common->sendPollAnswer")
+    void commonSendPollAnswer() throws IOException {
         model = new ModelBuilder()
-                .modelName("Poll")
-                .calledMethod("save")
-                .addProperty("Ref", "259c0f00-3286-11e8-ad11-005056886752")
-
-                .build()
-
-                .printPrettyRequest()
-                .run(Server.TEST)
-
-                .printPrettyResponse()
-        ;
-    }
-
-    @Test
-    @DisplayName("Расширения канала опроса удовлетворённости клиентов через мобильное приложения")
-    void mobile1() throws IOException {
-        model = new ModelBuilder()
-                .modelName("Poll")
-                .calledMethod("save")
-                .addProperty("Ref", "259c0f00-3286-11e8-ad11-005056886752")
-
-                .build()
-
-                .printPrettyRequest()
-                .run(Server.LIVE)
-
-                .printPrettyResponse()
-        ;
-    }
-
-    @Test
-    @DisplayName("Расширения канала опроса удовлетворённости клиентов через мобильное приложения")
-    void mobile2() throws IOException {
-        model = new ModelBuilder()
-                .apiKey("b96bd5383d1c0b66d29d859030c0d7de")
+                .apiKey("e810e6e4283d33db4d2f016a7d406e66")
                 .modelName("Common")
                 .calledMethod("sendPollAnswer")
-                .addProperty("Ref", "259c0f00-3286-11e8-ad11-005056886752")
+                .addProperty("Number", "20600000067700")
+                .addProperty("Status", "1")
+//                .addProperty("ClientType", "Sender") // - Не обов'язкове
+//                .addProperty("Mark", "5") // - Не обов'язкове
+//                .addProperty("Comment", "Николайченко") // - Не обов'язкове
+//                .addProperty("Ref", "259c0f00-3286-11e8-ad11-005056886752") //todo
+                .build().run(Server.TEST).printPrettyRequest().printPrettyResponse();
 
-                .build()
+        assertTrue(model.getResponse().get("success").asBoolean());
+    }
 
-                .printPrettyRequest()
-                .run(Server.TEST)
+    @Test
+    @DisplayName("InternetDocument->getDocumentForPoll")
+    void t1() throws IOException {
+        model = new ModelBuilder()
+                .apiKey("1a85cdffb52d67959d040ce9d517ab4c")
+                .modelName("InternetDocument")
+                .calledMethod("getDocumentForPoll")
+                .addProperty("Number", "20600000067700")
+                .addProperty("ClientType", "Sender")
+                .addProperty("Status", "1")
+                .addProperty("Mark", "10")
+                .addProperty("Comment", "Николайченко")
 
-                .printPrettyResponse()
+                .build().printPrettyRequest()
+
+                .run(Server.TEST).printPrettyResponse()
         ;
     }
 
     @Test
-    @DisplayName("Расширения канала опроса удовлетворённости клиентов через мобильное приложения")
-    void mobile3() throws IOException {
+    void getPollCode() throws IOException {
         model = new ModelBuilder()
-                .apiKey("38d9f4c9c98686aca629634a245d7828")
+                .apiKey("1a85cdffb52d67959d040ce9d517ab4c")
                 .modelName("Common")
-                .calledMethod("sendPollAnswer")
-                .addProperty("Ref", "259c0f00-3286-11e8-ad11-005056886752")
-
-                .build()
-
-                .printPrettyRequest()
-                .run(Server.LIVE)
-
-                .printPrettyResponse()
-        ;
+                .calledMethod("getReviewTypes")
+                .build().run(Server.TEST).printPrettyResponse();
+        assertTrue(model.getResponse().get("success").asBoolean());
     }
-
-
 }
