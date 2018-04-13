@@ -56,6 +56,7 @@ class RPZ_50572 {
     }
 
     @Test
+    @DisplayName("RPZ-50025")
     void getPollCode() throws IOException {
         model = new ModelBuilder()
                 .apiKey("1a85cdffb52d67959d040ce9d517ab4c")
