@@ -38,25 +38,30 @@ class RPZ_50572 {
 
     @Test
     @DisplayName("InternetDocument->getDocumentForPoll")
-    void t1() throws IOException {
+    void documentGetDocumentForPoll() throws IOException {
         model = new ModelBuilder()
                 .apiKey("1a85cdffb52d67959d040ce9d517ab4c")
                 .modelName("InternetDocument")
                 .calledMethod("getDocumentForPoll")
                 .addProperty("Number", "20600000067700")
                 .addProperty("ClientType", "Sender")
-                .addProperty("Status", "1")
-                .addProperty("Mark", "10")
-                .addProperty("Comment", "Николайченко")
+//                .addProperty("ClientType", "Recipient")
+//                .addProperty("Status", "1")
+//                .addProperty("Mark", "10")
+//                .addProperty("Comment", "Николайченко")
 
                 .build().printPrettyRequest()
 
-                .run(Server.TEST).printPrettyResponse()
-        ;
+                .run(Server.TEST).printPrettyResponse();
+
+        assertTrue(model.getResponse().get("success").asBoolean());
     }
 
+    /**
+     * Тут отримаємо REF`ки відгуків клієнтів, які будемо використовувати в тесті Common->sendPollAnswer
+     */
     @Test
-    @DisplayName("RPZ-50025")
+    @DisplayName("Get Ref`s of user responses (RPZ-50025)")
     void getPollCode() throws IOException {
         model = new ModelBuilder()
                 .apiKey("1a85cdffb52d67959d040ce9d517ab4c")
