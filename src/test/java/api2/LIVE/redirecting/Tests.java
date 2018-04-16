@@ -20,44 +20,35 @@ class Tests {
     @Test
     @DisplayName("Проверка возможности создания заявки на переадресацию отправления")
     void checkPossibilityForRedirecting() throws IOException {
-        model = new CheckPossibilityForRedirecting().docNumber("20450066644175").build().printPrettyRequest()
-                .run()
-                .printPrettyResponse()
-        ;
+        model = new CheckPossibilityForRedirecting().docNumber("20450066644175").build().run();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 
     @Test
     @DisplayName("Создание заявки переадресации отправления (адрес)")
     void createRedirectingRequestAddress() throws IOException {
-        model = new CreateRedirectingRequest(Target.ADDRESS).docNumber("20450066644175").build().printPrettyRequest()
-                .run()
-                .printPrettyResponse()
-        ;
+        model = new CreateRedirectingRequest(Target.ADDRESS).docNumber("20450066644175").build().run();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 
     @Test
     @DisplayName("Создание заявки переадресации отправления (отделение)")
     void createRedirectingRequestWarehouse() throws IOException {
-        model = new CreateRedirectingRequest(Target.WAREHOUSE).docNumber("20450066644175").build().printPrettyRequest()
-                .run()
-                .printPrettyResponse()
-        ;
+        model = new CreateRedirectingRequest(Target.WAREHOUSE).docNumber("20450066644175").build().run();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 
 //    ------------------------------------------------------------------------------------------------------------------
 //    DEBUGGING
 
-    @Test
+//    @Test
     void printStreet() throws IOException {
 //        new OnlineSearchStreets().settlementName("Львів").street("Дудаєва")
         new OnlineSearchStreets()
                 .build().printPrettyRequest().run().printPrettyResponse();
     }
 
-    @Test
+//    @Test
     void printCity() throws IOException {
         new GetCitiesOfCompany().byName("Львів")
                 .build().printRequest().run().printPrettyResponse();

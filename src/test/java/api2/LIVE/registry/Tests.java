@@ -24,7 +24,7 @@ class Tests {
     @Test
     @DisplayName("Registry Ref for loyalty (LIVE)")
     void printRegistryRefLoyaltyLive() throws IOException {
-        model = new GetRegistryList().user(LOYALTY_LIVE).build().printPrettyRequest();
+        model = new GetRegistryList().user(LOYALTY_LIVE).build().run();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 

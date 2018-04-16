@@ -27,7 +27,7 @@ class Tests {
 
     @Test
     void createEWs() throws IOException {
-        new CreateEW().build().printPrettyRequest().run().printPrettyResponse();
+        new CreateEW().build().run();
     }
 
     /**
@@ -52,14 +52,14 @@ class Tests {
     @Test
     @DisplayName("Create EW")
     void createEWTest() throws Throwable {
-        model = new CreateEW().build().printPrettyRequest().run().printPrettyResponse();
+        model = new CreateEW().build().run();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 
     @Test
     @DisplayName("Get list of EW`s")
     void getEWListTest() throws IOException {
-        model = new GetListEW().getTodayList().build().run().printPrettyResponse();
+        model = new GetListEW().getTodayList().build().run();
         assertTrue(model.getResponse().get("success").asBoolean());
     }
 
