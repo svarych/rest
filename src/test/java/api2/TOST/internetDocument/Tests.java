@@ -1,4 +1,4 @@
-package api2.internetDocument.test;
+package api2.TOST.internetDocument;
 
 import api2.models.internetDocument.CreateEW;
 import api2.service.Helper;

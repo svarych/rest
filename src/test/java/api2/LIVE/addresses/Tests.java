@@ -1,4 +1,4 @@
-package api2.addresses.live;
+package api2.LIVE.addresses;
 
 import api2.models.addresses.*;
 import api2.service.Model;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Tests {
@@ -23,22 +24,22 @@ class Tests {
     @Test
     @DisplayName("Search Streets on Settlement")
     void searchStreetsOnSettlementTest() throws IOException {
-        model = new OnlineSearchStreets().build().printPrettyRequest().run();
+        model = new OnlineSearchStreets().build().run();
         assertTrue(model.getResponse().findValues("TotalCount").size() > 0);
     }
 
     @Test
     @DisplayName("Create CounterParty Address")
     void createCounterPartyAddressTest() throws IOException {
-        model = new CreateCounterPartyAddress().build().printPrettyRequest().run();
-        assertTrue(model.getResponse().findValues("Ref").size() == 1);
+        model = new CreateCounterPartyAddress().build().run();
+        assertEquals(1, model.getResponse().findValues("Ref").size());
     }
 
     @Test
     @DisplayName("Edit CounterParty Address")
     void editCounterPartyAddressTest() throws IOException {
-        model = new EditCounterPartyAddress().build().printPrettyRequest().run();
-        assertTrue(model.getResponse().findValues("Ref").size() == 1);
+        model = new EditCounterPartyAddress().build().run();
+        assertEquals(1, model.getResponse().findValues("Ref").size());
     }
 
     @Test
@@ -46,11 +47,11 @@ class Tests {
     void deleteCounterPartyAddressTest() throws IOException {
         // Creating new Address
         model = new CreateCounterPartyAddress().replaceProperty("BuildingNumber", "11К").build().run();
-        assertTrue(model.getResponse().findValues("Ref").size() == 1);
+        assertEquals(1, model.getResponse().findValues("Ref").size());
 
         // Getting Ref of Address to delete
         String ref = model.getResponse().findValue("Ref").toString().replace("\"", "");
-        assert ref.length() > 0;
+        assertTrue(ref.length() > 0);
 
         // Deleting created Address
         model = new DeleteCounterPartyAddress().replaceProperty("Ref", ref).build().run();
@@ -67,7 +68,7 @@ class Tests {
     @DisplayName("Get Cities of company")
     void getCitiesOfCompanyTest() throws IOException {
         model = new GetCitiesOfCompany().byName("Ясіня").build().run();
-        assertTrue(model.getResponse().findValue("Description").toString().equals("\"Ясіня\""));
+        assertEquals("\"Ясіня\"", model.getResponse().findValue("Description").toString());
     }
 
     /**
@@ -88,7 +89,7 @@ class Tests {
     @DisplayName("Get geographical Regions of Ukraine")
     void getGeographicalRegionsTest() throws IOException {
         model = new GetGeographicalRegions().build().run();
-        assertTrue(model.getResponse().findValues("Description").size() == 25);
+        assertEquals(25, model.getResponse().findValues("Description").size());
     }
 
     /**
@@ -97,7 +98,7 @@ class Tests {
     @Test
     @DisplayName("Get streets of company")
     void getStreetsOfCompanyTest() throws IOException {
-        model = new GetStreetsOfCompany().byStreetName("Гру").build().run().printPrettyResponse();
+        model = new GetStreetsOfCompany().byStreetName("Гру").build().run();
         assertTrue(model.getResponse().findValues("Description").size() > 0);
     }
 
@@ -105,7 +106,7 @@ class Tests {
     @Test
     @DisplayName("Get warehouses and types of warehouses")
     void getWarehousesTest() throws IOException {
-        model = new GetWarehouses().build().run().printPrettyResponse();
+        model = new GetWarehouses().build().run();
         assertTrue(model.getResponse().findValues("SiteKey").size() > 0);
     }
 }

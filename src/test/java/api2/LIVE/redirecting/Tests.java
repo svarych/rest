@@ -1,4 +1,4 @@
-package api2.redirecting.live;
+package api2.LIVE.redirecting;
 
 import api2.models.addresses.GetCitiesOfCompany;
 import api2.models.addresses.OnlineSearchStreets;
@@ -21,10 +21,10 @@ class Tests {
     @DisplayName("Проверка возможности создания заявки на переадресацию отправления")
     void checkPossibilityForRedirecting() throws IOException {
         model = new CheckPossibilityForRedirecting().docNumber("20450066644175").build().printPrettyRequest()
-//                .run()
-//                .printPrettyResponse()
+                .run()
+                .printPrettyResponse()
         ;
-//        assertTrue(model.getResponse().get("success").asBoolean());
+        assertTrue(model.getResponse().get("success").asBoolean());
     }
 
     @Test

@@ -4,7 +4,10 @@
 
 package api2.models.redirecting;
 
+import api2.service.Helper;
 import api2.service.ModelBuilder;
+import api2.service.enums.Server;
+import api2.service.enums.UserType;
 
 import java.io.IOException;
 
@@ -20,8 +23,8 @@ public final class CheckPossibilityForRedirecting extends ModelBuilder {
 
     public CheckPossibilityForRedirecting() throws IOException {
         this
-                .apiKey("8f7e235f0afe315e2e81e10ac9d5c914")
-//                .apiKey(new Helper().getApiKey("50cdd@hell.yeah", "1234", Server.LIVE))
+//                .apiKey("8f7e235f0afe315e2e81e10ac9d5c914")
+                .apiKey(new Helper().getApiKey(UserType.LOYALTY, "50cdd@hell.yeah", "1234", Server.LIVE))
                 .modelName("AdditionalServiceGeneral")
                 .calledMethod("checkPossibilityForRedirecting")
                 .addProperty("Number", "20450066644175")

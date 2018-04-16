@@ -90,7 +90,7 @@ class RPZ_49617 {
 
     private String requestForEW(UserType userType, Format format) throws IOException {
         if (userType == CORPORATE_TEST) {
-            System.out.print("Corporate test");
+            System.out.print("Corporate TOST");
             if (format == PDF) {
                 System.out.println(" PDF");
             }
@@ -104,7 +104,7 @@ class RPZ_49617 {
                     + properties.getProperty("corporate.test");
         }
         if (userType == UserType.LOYALTY_TEST) {
-            System.out.print("Loyalty test");
+            System.out.print("Loyalty TOST");
             if (format == PDF) {
                 System.out.println(" PDF");
             }
@@ -119,7 +119,7 @@ class RPZ_49617 {
         }
         if (userType == UserType.CORPORATE_LIVE) {
             model = new GetListEW().user(UserType.CORPORATE_LIVE).build().run(LIVE);
-            System.out.print("Corporate live");
+            System.out.print("Corporate LIVE");
             if (format == PDF) {
                 System.out.println(" PDF");
             }
@@ -132,7 +132,7 @@ class RPZ_49617 {
                     + properties.getProperty("corporate.live");
         }
         if (userType == UserType.LOYALTY_LIVE) {
-            System.out.print("Loyalty live");
+            System.out.print("Loyalty LIVE");
             if (format == PDF) {
                 System.out.println(" PDF");
             }

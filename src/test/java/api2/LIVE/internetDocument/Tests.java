@@ -1,9 +1,9 @@
-package api2.internetDocument.live;
+package api2.LIVE.internetDocument;
 
-import api2.service.Model;
 import api2.models.internetDocument.CreateEW;
 import api2.models.internetDocument.DeleteEW;
 import api2.models.internetDocument.GetListEW;
+import api2.service.Model;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
@@ -23,6 +23,11 @@ class Tests {
         for (int i = 0; i < 5; i++) {
             new CreateEW().build().run();
         }
+    }
+
+    @Test
+    void createEWs() throws IOException {
+        new CreateEW().build().printPrettyRequest().run().printPrettyResponse();
     }
 
     /**

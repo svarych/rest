@@ -221,10 +221,10 @@ public class Helper {
         }
 
         if (server == Server.MY2) {
-            open("https://my2.novaposhta.ua/auth");
+            open("https://MY2.novaposhta.ua/auth");
             $("#LoginForm_username").setValue("admin@oboi.ua");
             $("#LoginForm_password").setValue("AntiLitvinHahl0Doo").pressEnter();
-            open("https://my2.novaposhta.ua/admin/getDocument");
+            open("https://MY2.novaposhta.ua/admin/getDocument");
         }
 
         $(byName("document")).setValue(number).pressEnter();

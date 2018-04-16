@@ -30,7 +30,7 @@ class Examples {
     }
 
     @Test
-    @DisplayName("enum test")
+    @DisplayName("enum TOST")
     void enumTest() {
         OwnershipForm user = OwnershipForm.ORGANIZATION;
         String s = user.toString();
@@ -147,7 +147,7 @@ class Examples {
 
     @Test
     void t013() throws IOException {
-//        model = new GetListEW().getFullList().apiKey(properties.getProperty("apiKey.test")).build().run(test);
+//        model = new GetListEW().getFullList().apiKey(properties.getProperty("apiKey.TOST")).build().run(TOST);
         model = new GetListEW().getFullList().build().run();
         System.out.println(model.getResponse().findValues("IntDocNumber").size());
     }
@@ -179,7 +179,7 @@ class Examples {
     }
 
     @Test
-    @DisplayName("Get api key (live)")
+    @DisplayName("Get api key (LIVE)")
     void getApiKeyCorporateLiveTest() throws IOException {
         new ModelBuilder().modelName("CorporateUserGeneral").calledMethod("getCorporateByLogin")
                 .addProperty("Login", "50cdd")
@@ -190,7 +190,7 @@ class Examples {
     }
 
     @Test
-    @DisplayName("Get all Api-keys for user by any one key (loyalty live)")
+    @DisplayName("Get all Api-keys for user by any one key (loyalty LIVE)")
     void getAllApiKeysLiveTest() throws IOException {
         new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
                 .apiKey("38d9f4c9c98686aca629634a245d7828")
@@ -200,7 +200,7 @@ class Examples {
     }
 
     @Test
-    @DisplayName("Get all Api-keys for user by any one key (corporate live)")
+    @DisplayName("Get all Api-keys for user by any one key (corporate LIVE)")
     void getAllApiKeysLiveTest2() throws IOException {
         new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
                 .apiKey("39c9b0a6cecf2a4368ee83abfaa7f597")
@@ -210,7 +210,7 @@ class Examples {
     }
 
     @Test
-    @DisplayName("Get all Api-keys for user by any one key (corporate test)")
+    @DisplayName("Get all Api-keys for user by any one key (corporate TOST)")
     void getAllApiKeysTestServerCorporateTest() throws IOException {
         model = new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
                 .apiKey(new Helper().getApiKeyCorporateTest())
@@ -225,7 +225,7 @@ class Examples {
     }
 
     @Test
-    @DisplayName("Get all Api-keys for user by any one key (loyalty test)")
+    @DisplayName("Get all Api-keys for user by any one key (loyalty TOST)")
     void getAllApiKeysTestServerLoyaltyTest() throws IOException {
         model = new ModelBuilder().modelName("CommonGeneral").calledMethod("getApiKeysList")
                 .apiKey(new Helper().getApiKeyLoyaltyTest())
@@ -238,7 +238,7 @@ class Examples {
     }
 
     @Test
-    @DisplayName("Get list of Today created EW`s from test server")
+    @DisplayName("Get list of Today created EW`s from TOST server")
     void getEWTodayFromTestServer() throws IOException {
         model = new GetListEW().getTodayList().apiKey(properties.getProperty("apiKey.test")).build().run(TEST);
         System.out.println(model.getResponse().findValues("IntDocNumber"));

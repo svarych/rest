@@ -1,4 +1,4 @@
-package api2.counterparties.test;
+package api2.TOST.counterparties;
 
 import api2.models.counterparties.CreateCounterPartyWithCP;
 import api2.service.Model;
