@@ -11,9 +11,7 @@ node {
             if (env.MAVEN_IGNORE_FAILURES) {
                 commandParams += " -Dmaven.test.failure.ignore=${env.MAVEN_IGNORE_FAILURES}"
             }
-}
-            sh -c "mvn clean test"
-
+            sh -c "mvn clean test" + commandParams
         }
     }
 }
