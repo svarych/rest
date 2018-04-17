@@ -11,4 +11,5 @@ RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta
 #RUN mkdir -p rest-api
 #RUN cp /home/tober/Desktop/rest/. allure-report:/rest-api
 #
-ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
+ENTRYPOINT [""]
+#ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
