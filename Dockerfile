@@ -2,49 +2,10 @@ FROM maven:3.3.9-jdk-8
 
 WORKDIR /usr/src/novaposhta
 
-# Google Chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-	&& echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-	&& apt-get update -qqy \
-	&& apt-get -qqy install google-chrome-stable \
-	&& rm /etc/apt/sources.list.d/google-chrome.list \
-	&& rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
-	&& sed -i 's/"$HERE\/chrome"/"$HERE\/chrome" --no-sandbox/g' /opt/google/chrome/google-chrome
-#    && sed -i 's/"$HERE\/chrome"/"$HERE\/chrome" --headless --disable-gpu/g' /opt/google/chrome/google-chrome
-
-# ChromeDriver
-ARG CHROME_DRIVER_VERSION=2.37
-RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
-	&& rm -rf /opt/chromedriver \
-	&& unzip /tmp/chromedriver_linux64.zip -d /opt \
-	&& rm /tmp/chromedriver_linux64.zip \
-	&& cp /opt/chromedriver '/usr/local/bin/chromedriver_2.37' \
-	&& mv /opt/chromedriver /opt/chromedriver-$CHROME_DRIVER_VERSION \
-	&& chmod 755 /opt/chromedriver-$CHROME_DRIVER_VERSION \
-	&& ln -fs /opt/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
-ENV CHROME_BIN /usr/bin/google-chrome
-
 # Allure report
 RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
     && tar -zxvf allure-2.6.0.tgz -C /opt/ \
     && ln -s /opt/allure-2.6.0/bin/allure /usr/bin/allure && allure --version
 
-# Xvfb
-RUN apt-get update -qqy \
-	&& apt-get -qqy install xvfb \
-	&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-#ENV DISPLAY :99
-ENV DISPLAY :0
-
-# Rights for browser
-RUN mkdir /.pki \
-    && mkdir /.pki/nssdb \
-    && chmod -R 755 /.pki \
-    && chmod -R 755 /usr/src \
-    && mkdir /target \
-    && mkdir /target/screenshots \
-    && chmod -R 755 /target
-
-ENTRYPOINT [""]
-#CMD "mvn clean test"
+ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
+CMD ["mvn clean test"]
