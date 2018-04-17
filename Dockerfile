@@ -26,24 +26,26 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
 ENV CHROME_BIN /usr/bin/google-chrome
 
 # Allure report
-#RUN apt-add-repository -qqy ppa:qameta/allure > /dev/null 2>&1 \
-#    && apt-get update \
-#    && apt-get install allure
+RUN apt-add-repository -qqy ppa:qameta/allure > /dev/null 2>&1 \
+    && apt-get update \
+    && apt-get install allure
 
 # Xvfb
-RUN apt-get update -qqy \
-	&& apt-get -qqy install xvfb \
-	&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+#RUN apt-get update -qqy \
+#	&& apt-get -qqy install xvfb \
+#	&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
 #ENV DISPLAY :99
-ENV DISPLAY :0
+#ENV DISPLAY :0
+
 #ADD start_test.sh /start_test.sh
 #RUN chmod a+x /start_test.sh
 
 # Rights for browser
-RUN mkdir /.pki \
-    && mkdir /.pki/nssdb \
-    && chmod -R 755 /.pki \
-    && chmod -R 755 /usr/src \
-    && mkdir /target \
-    && mkdir /target/screenshots \
-    && chmod -R 755 /target
+#RUN mkdir /.pki \
+#    && mkdir /.pki/nssdb \
+#    && chmod -R 755 /.pki \
+#    && chmod -R 755 /usr/src \
+#    && mkdir /target \
+#    && mkdir /target/screenshots \
+#    && chmod -R 755 /target
