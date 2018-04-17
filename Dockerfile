@@ -47,4 +47,4 @@ RUN mkdir /.pki \
     && chmod -R 755 /target
 
 ENTRYPOINT [""]
-CMD "mvn clean test"
+#CMD "mvn clean test"
