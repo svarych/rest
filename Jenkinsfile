@@ -2,7 +2,7 @@ node {
     checkout scm
 
     stage('Novaposhta API tests') {
-        def environment = docker.build('allure_rest')
+        def environment = docker.build('allure-rport')
         environment.inside() {
 //==============================================================================
             String commandParams = ''
