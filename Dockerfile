@@ -22,16 +22,9 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
 	&& mv /opt/chromedriver /opt/chromedriver-$CHROME_DRIVER_VERSION \
 	&& chmod 755 /opt/chromedriver-$CHROME_DRIVER_VERSION \
 	&& ln -fs /opt/chromedriver-$CHROME_DRIVER_VERSION /usr/bin/chromedriver
-#ADD utils/xvfb-chrome /usr/bin/xvfb-chrome
-#RUN ln -sf /usr/bin/xvfb-chrome /usr/bin/google-chrome
 ENV CHROME_BIN /usr/bin/google-chrome
 
 # Allure report
-#RUN apt-get update
-#    RUN apt-get install -y software-properties-common
-#    RUN apt-add-repository -y ppa:qameta/allure
-#    RUN apt-get update
-#    RUN apt-get install allure
 RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
     && tar -zxvf allure-2.6.0.tgz -C /opt/ \
     && ln -s /opt/allure-2.6.0/bin/allure /usr/bin/allure && allure --version
@@ -44,9 +37,6 @@ RUN apt-get update -qqy \
 #ENV DISPLAY :99
 ENV DISPLAY :0
 
-#ADD start_test.sh /start_test.sh
-#RUN chmod a+x /start_test.sh
-
 # Rights for browser
 RUN mkdir /.pki \
     && mkdir /.pki/nssdb \
@@ -55,6 +45,5 @@ RUN mkdir /.pki \
     && mkdir /target \
     && mkdir /target/screenshots \
     && chmod -R 755 /target
-
 
 ENTRYPOINT [""]
