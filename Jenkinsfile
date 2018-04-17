@@ -16,13 +16,13 @@ node {
         }
     }
 
-    stage('Results log') {
-        junit allowEmptyResults: true, keepLongStdio: true, testResults: '**/target/surefire-reports/*.xml'
-    }
+//    stage('Results log') {
+//        junit allowEmptyResults: true, keepLongStdio: true, testResults: '**/target/surefire-reports/*.xml'
+//    }
 
-    stage('Allure report') {
-        sh allure generate -c target/surefire-reports
-    }
+//    stage('Allure report') {
+//        sh allure generate -c target/surefire-reports
+//    }
 
 //    stage('Allure publish') {
 //        echo 'Publish allure report'
@@ -38,7 +38,8 @@ node {
  //       )
  //   }
 
-    stage('Artifacts') {
-        archiveArtifacts 'build/reports/**/*'
-    }
+//    stage('Artifacts') {
+//        archiveArtifacts 'build/reports/**/*'
+//    }
+
 }
