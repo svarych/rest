@@ -26,9 +26,9 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
 ENV CHROME_BIN /usr/bin/google-chrome
 
 # Allure report
-RUN apt-add-repository -qqy ppa:qameta/allure \
-    && apt-get update \
-    && apt-get install allure
+RUN apt-add-repository -qqy ppa:qameta/allure
+#    && apt-get update \
+#    && apt-get install allure
 
 # Xvfb
 #RUN apt-get update -qqy \
