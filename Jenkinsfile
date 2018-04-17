@@ -2,7 +2,7 @@ node {
     checkout scm
 
     stage('Novaposhta tests') {
-        def environment = docker.build('tober_test_docker_build')
+        def environment = docker.build('tober_test_rest_allure')
         environment.inside() {
 //==============================================================================
             String commandParams = ''
