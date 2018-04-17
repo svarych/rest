@@ -13,6 +13,7 @@ node {
             }
 
             sh -c "mvn clean test"
+            }
         }
     }
 }
