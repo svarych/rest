@@ -20,23 +20,23 @@ node {
         junit allowEmptyResults: true, keepLongStdio: true, testResults: '**/target/surefire-reports/*.xml'
     }
 
-//    stage('Allure report') {
-//        sh allure generate -c target/surefire-reports
-//    }
-
-    stage('Allure publish') {
-        echo 'Publish allure report'
-        publishHTML(
-            target: [
-                allowMissing         : false,
-                alwaysLinkToLastBuild: false,
-                keepAll              : true,
-                reportDir            : 'allure-report',
-                reportFiles          : 'index.html',
-                reportName           : "Allure Report"
-            ]
-        )
+    stage('Allure report') {
+        sh allure generate -c target/surefire-reports
     }
+
+//    stage('Allure publish') {
+//        echo 'Publish allure report'
+ //       publishHTML(
+ //           target: [
+ //               allowMissing         : false,
+ //               alwaysLinkToLastBuild: false,
+ //               keepAll              : true,
+ //               reportDir            : 'allure-report',
+ //               reportFiles          : 'index.html',
+ //               reportName           : "Allure Report"
+ //           ]
+ //       )
+ //   }
 
     stage('Artifacts') {
         archiveArtifacts 'build/reports/**/*'
