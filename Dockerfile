@@ -1,6 +1,5 @@
 FROM maven:3.3.9-jdk-8
 WORKDIR /usr/src/novaposhta
-RUN apt-get update
 
 # Google Chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -27,8 +26,9 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
 ENV CHROME_BIN /usr/bin/google-chrome
 
 # Allure report
-RUN apt-get install -y python-software-properties software-properties-common \
-    && apt-add-repository -y ppa:qameta/allure
+RUN apt-get update \
+    && apt-get install -y python-software-properties software-properties-common \
+    && apt-add-repository -y ppa:qameta/allure \
     && apt-get update \
     && apt-get install allure
 
