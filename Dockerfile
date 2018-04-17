@@ -1,7 +1,7 @@
 FROM maven:3.3.9-jdk-8
 WORKDIR /usr/src/novaposhta
-# Google Chrome
 
+# Google Chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
 	&& echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
 	&& apt-get update -qqy \
@@ -12,7 +12,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 #    && sed -i 's/"$HERE\/chrome"/"$HERE\/chrome" --headless --disable-gpu/g' /opt/google/chrome/google-chrome
 
 # ChromeDriver
-
 ARG CHROME_DRIVER_VERSION=2.37
 RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip \
 	&& rm -rf /opt/chromedriver \
@@ -26,8 +25,12 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
 #RUN ln -sf /usr/bin/xvfb-chrome /usr/bin/google-chrome
 ENV CHROME_BIN /usr/bin/google-chrome
 
-# Xvfb
+# Allure report
+RUN apt-add-repository -qqy ppa:qameta/allure > /dev/null 2>&1 \
+    && apt-get update \
+    && apt-get install allure
 
+# Xvfb
 RUN apt-get update -qqy \
 	&& apt-get -qqy install xvfb \
 	&& rm -rf /var/lib/apt/lists/* /var/cache/apt/*
@@ -37,7 +40,6 @@ ENV DISPLAY :0
 #RUN chmod a+x /start_test.sh
 
 # Rights for browser
-
 RUN mkdir /.pki \
     && mkdir /.pki/nssdb \
     && chmod -R 755 /.pki \
@@ -45,4 +47,3 @@ RUN mkdir /.pki \
     && mkdir /target \
     && mkdir /target/screenshots \
     && chmod -R 755 /target
-
