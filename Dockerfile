@@ -55,3 +55,6 @@ RUN mkdir /.pki \
     && mkdir /target \
     && mkdir /target/screenshots \
     && chmod -R 755 /target
+
+
+ENTRYPOINT [""]
