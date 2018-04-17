@@ -27,7 +27,7 @@ ENV CHROME_BIN /usr/bin/google-chrome
 
 # Allure report
 RUN apt-get update
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common
 
 RUN apt-get install -y python-software-properties \
     && apt-add-repository -qqy ppa:qameta/allure
