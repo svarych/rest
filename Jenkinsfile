@@ -12,7 +12,7 @@ node {
                 commandParams += " -Dmaven.test.failure.ignore=${env.MAVEN_IGNORE_FAILURES}"
             }
 
-            mvn clean test + commandParams
+//            mvn clean test + commandParams
         }
     }
 }
