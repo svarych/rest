@@ -27,7 +27,7 @@ RUN wget --no-verbose -O /tmp/chromedriver_linux64.zip https://chromedriver.stor
 ENV CHROME_BIN /usr/bin/google-chrome
 
 # Allure report
-RUN apt-get install -y software-properties-common \
+RUN apt-get install -y python-software-properties software-properties-common \
     && apt-add-repository -y ppa:qameta/allure
     && apt-get update \
     && apt-get install allure
