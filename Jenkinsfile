@@ -2,7 +2,7 @@ node {
     checkout scm
 
     stage('Novaposhta API tests') {
-        def environment = docker.build('tober_test_rest_allure')
+        def environment = docker.build('allure_rest')
         environment.inside() {
 //==============================================================================
             String commandParams = ''
@@ -11,7 +11,8 @@ node {
             if (env.MAVEN_IGNORE_FAILURES) {
                 commandParams += " -Dmaven.test.failure.ignore=${env.MAVEN_IGNORE_FAILURES}"
             }
-            // sh -c "mvn clean test" + commandParams
+
+            mvn clean test + commandParams
         }
     }
 }
