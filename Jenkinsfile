@@ -10,12 +10,12 @@ node {
 
 
 //==============================================================================
-            String commandParams = ''
+//            String commandParams = ''
 
 // IGNORE FAILURES -------------------------------------------------------------
-            if (env.MAVEN_IGNORE_FAILURES) {
-                commandParams += " -Dmaven.test.failure.ignore=${env.MAVEN_IGNORE_FAILURES}"
-            }
+//            if (env.MAVEN_IGNORE_FAILURES) {
+//                commandParams += " -Dmaven.test.failure.ignore=${env.MAVEN_IGNORE_FAILURES}"
+//            }
 
 //            mvn clean test + commandParams
         }
