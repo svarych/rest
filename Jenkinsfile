@@ -3,7 +3,10 @@ node {
 
     stage('Novaposhta API tests') {
         def environment = docker.build('allure-report')
-//        environment.inside() {
+        environment.inside() {}
+
+
+
 //==============================================================================
             String commandParams = ''
 
@@ -15,4 +18,3 @@ node {
 //            mvn clean test + commandParams
         }
     }
-//}
