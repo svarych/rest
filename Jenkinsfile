@@ -4,7 +4,7 @@ node {
     stage('Novaposhta API tests') {
         def environment = docker.build('allure-report')
         environment.inside() {
-            mvn clean test
+            sh 'mvn clean test'
         }
 
 
