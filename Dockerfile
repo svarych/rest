@@ -16,4 +16,4 @@ RUN apt-get update && apt-get install -y mc
 #RUN cp /home/tober/Desktop/rest/. allure-report:/rest-api
 #
 #ENTRYPOINT ["/"]
-#ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
