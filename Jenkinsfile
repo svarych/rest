@@ -1,9 +1,11 @@
 node {
+
+    def container
+
     stage 'Checkout'{
         checkout scm
     }
 
-    def container
     stage 'Build'{
         container = docker.build('rest')
     }
@@ -11,5 +13,4 @@ node {
     stage 'Test'{
         sh 'mvn'
     }
-
 }
