@@ -2,7 +2,7 @@ node {
     stage 'Checkout'
     checkout scm
 
-    stahe 'Build'
+    stage 'Build'
     docker.build('rest')
 
     stage 'Test'
