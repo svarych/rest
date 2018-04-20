@@ -18,4 +18,4 @@ RUN apt-get update && apt-get install -y mc
 #ENTRYPOINT ["/"]
 ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
 
-RUN mvn
+RUN mvn clean test
