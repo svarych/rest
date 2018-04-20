@@ -6,7 +6,7 @@ node {
         def allure_container = docker.build("allure")
 
         allure_container.inside() {
-
+            mc
         }
     }
 }
