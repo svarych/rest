@@ -14,7 +14,7 @@
 
 pipeline {
     checkout scm
-    def restContainer = docker.build("rest")
+//    def restContainer = docker.build("rest")
 
     node {
         agent {
@@ -23,9 +23,9 @@ pipeline {
         stages {
             stage('Tests') {
                 steps {
-                    restContainer.inside() {
+
                         sh 'mvn clean test'
-                    }
+
                 }
             }
         }
