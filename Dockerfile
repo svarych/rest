@@ -9,7 +9,7 @@ RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta
     && ln -s /opt/allure-2.6.0/bin/allure /usr/bin/allure && allure --version
 
 #Test mc
-RUN apt-get update && apt-get install -y mc
+#RUN apt-get update && apt-get install -y mc
 
 #
 #RUN mkdir -p rest-api
