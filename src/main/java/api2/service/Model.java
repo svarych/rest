@@ -22,6 +22,7 @@ public class Model {
     private ObjectNode requestNode;
 
     private String apiKey;
+    private String system;
     private String modelName;
     private String calledMethod;
     private LinkedHashMap<String, Object> methodProperties;
@@ -31,6 +32,7 @@ public class Model {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
 
         this.apiKey = modelBuilder.getApiKey();
+        this.system = modelBuilder.getSystem();
         this.modelName = modelBuilder.getModelName();
         this.calledMethod = modelBuilder.getCalledMethod();
         this.methodProperties = modelBuilder.getMethodProperties();
@@ -54,6 +56,10 @@ public class Model {
 
     public String getApiKey() {
         return apiKey;
+    }
+
+    public String getSystem() {
+        return system;
     }
 
     public String getModelName() {

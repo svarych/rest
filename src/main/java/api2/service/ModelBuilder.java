@@ -8,12 +8,18 @@ public class ModelBuilder {
     private Helper helper = new Helper();
 
     private String apiKey;
+    private String system;
     private String modelName;
     private String calledMethod;
     private LinkedHashMap<String, Object> methodProperties = new LinkedHashMap<>();
 
     public ModelBuilder apiKey(String apiKey) {
         this.apiKey = apiKey;
+        return this;
+    }
+
+    public ModelBuilder system(String system) {
+        this.system = system;
         return this;
     }
 
@@ -57,6 +63,10 @@ public class ModelBuilder {
 
     public String getApiKey() {
         return apiKey;
+    }
+
+    public String getSystem() {
+        return system;
     }
 
     public String getModelName() {
