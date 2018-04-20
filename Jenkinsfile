@@ -1,34 +1,10 @@
-//node {
-//    checkout scm
-//
-//    stage('Novaposhta API tests') {
-//
-//        def allure_container = docker.build("allure")
-//
-//        allure_container.inside() {
-//            mvn clean test
-//        }
-//    }
-//}
-//
+node {
+    stage 'Checkout'
+    checkout scm
 
-pipeline {
-//    def restContainer = docker.build("rest")
+    stahe 'Build'
+    docker.build('rest')
 
-    node {
-        checkout scm
-
-        agent {
-            docker { image 'rest' }
-        }
-        stages {
-            stage('Tests') {
-                steps {
-
-                        sh 'mvn clean test'
-
-                }
-            }
-        }
-    }
+    stage 'Test'
+    sh 'mvn clean test'
 }
