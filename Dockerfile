@@ -16,11 +16,3 @@
 ##RUN cp /home/tober/Desktop/rest/. allure-report:/rest-api
 ##
 #ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
-
-
-FROM russmckendrick/nodejs
-ADD src /srv/app
-WORKDIR /srv/app
-RUN npm install
-EXPOSE 80
-ENTRYPOINT ["node", "index.js"]

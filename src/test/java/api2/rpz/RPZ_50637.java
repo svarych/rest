@@ -33,8 +33,7 @@ class RPZ_50637 {
                 .addProperty("DateTime", new Helper().getToday())
                 .addProperty("SenderCityRef", getCityRefByName("Полтава"))
 
-                .build().printPrettyRequest()
-                .run(Server.TEST).printPrettyResponse();
+                .build().run(Server.TEST);
 
         assertTrue(model.getResponse().get("errors").toString().contains("getStatusDocument not found"));
     }
@@ -42,9 +41,7 @@ class RPZ_50637 {
     @Test
     @DisplayName("CommonGeneral → sendConsolidateOrder")
     void t1() throws IOException {
-
         bindTimeIntervals();
-
         model = new ModelBuilder()
                 .apiKey(new Helper().getApiKeyCorporateTest())
                 .system("MobileApp")
@@ -59,9 +56,9 @@ class RPZ_50637 {
                 .addProperty("AddressComment", ", героя Ічкерії")
 
                 // Контактна інформація
-                .addProperty("SenderCounterpartyRef", "b366266a-6548-11e6-af9a-005056886752")
-                .addProperty("SenderPhone", "380675387254")
-                .addProperty("SenderContactPersonDescription", "Хоменко Андрій")
+                .addProperty("SenderCounterpartyRef", "8f59d90c-a1cc-11e7-80c5-0025909b4e32") // ТОВ Розетка Киев доставка
+                .addProperty("SenderPhone", "380672203916")
+                .addProperty("SenderContactPersonDescription", "Пупкін Дмитро")
 
                 // Payment info
                 .addProperty("PayerType", "Sender")
@@ -72,20 +69,25 @@ class RPZ_50637 {
                 .addProperty("CargoType", "Cargo")
                 .addProperty("Weight", "30")
                 .addProperty("SeatsAmount", "1")
-                .addProperty("Width", "")
-                .addProperty("Height", "")
-                .addProperty("Length", "")
+                .addProperty("Width", "10")
+                .addProperty("Height", "10")
+                .addProperty("Length", "10")
                 .addProperty("Note", "примітка")
 
                 // Time intervals
-                .addProperty("TimeIntervalStart", "")
-                .addProperty("TimeIntervalEnd", "")
+                .addProperty("TimeIntervalStart", timeStart())
+                .addProperty("TimeIntervalEnd", timeEnd())
 
                 // Type of request
                 .addProperty("Type", "RequestFromMobile")
 
-                .build().printPrettyRequest();
+                .build().printPrettyRequest()
+                .run(Server.TEST)
+                .printPrettyResponse()
+        ;
     }
+
+//== HELPER ============================================================================================================
 
     private String getCityRefByName(String name) throws IOException {
         model = new GetCitiesOfCompany().byName(name).build().run();
@@ -105,18 +107,11 @@ class RPZ_50637 {
                 .addProperty("DateTime", new Helper().getToday())
                 .addProperty("SenderCityRef", getCityRefByName("Львів"))
 
-                .build().printPrettyRequest()
-                .run(Server.TEST).printPrettyResponse();
-
+                .build()
+                .run(Server.TEST)
+        ;
         intervalStart = model.getResponse().findValue("Start").asText();
         intervalEnd = model.getResponse().findValue("End").asText();
-    }
-
-    @Test
-    void xt0() throws IOException {
-        bindTimeIntervals();
-        System.out.println(timeStart());
-        System.out.println(timeEnd());
     }
 
     private String timeStart() {
@@ -127,12 +122,23 @@ class RPZ_50637 {
         return date() + intervalEnd;
     }
 
-    private String date(){
+    @Test
+    void xt0() throws IOException {
+        bindTimeIntervals();
+        System.out.println(timeStart());
+        System.out.println(timeEnd());
+    }
+
+    private String date() {
         String full = new Helper().getToday();
         String year, day, month;
-        year = full.split(".", 0)[2];
-        month = full.split(".", 0)[1];
-        day = full.split(".", 0)[0];
+        year = reformat(full,2);
+        month = reformat(full,1);
+        day = reformat(full,0);
         return year + "-" + month + "-" + day + "T";
+    }
+
+    private String reformat(String s, int i){
+        return s.replace(".","-").split("-")[i];
     }
 }
