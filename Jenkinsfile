@@ -13,10 +13,11 @@
 //
 
 pipeline {
-    checkout scm
 //    def restContainer = docker.build("rest")
 
     node {
+        checkout scm
+
         agent {
             docker { image 'rest' }
         }
