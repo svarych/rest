@@ -2,15 +2,15 @@ node {
 
     def container
 
-    stage 'Checkout'{
+    stage 'Checkout' {
         checkout scm
     }
 
-    stage 'Build'{
+    stage 'Build' {
         container = docker.build('rest')
     }
 
-    stage 'Test'{
+    stage 'Test' {
         sh 'mvn'
     }
 }
