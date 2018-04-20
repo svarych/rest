@@ -6,5 +6,5 @@ node {
     docker.build('rest')
 
     stage 'Test'
-    sh 'mvn clean test'
+    sh 'mvn'
 }
