@@ -1,13 +1,10 @@
 node {
     stage 'Checkout'
-    checkout scm
+    git url: 'https://github.com/russmckendrick/jenkins-docker-example.git'
 
-    stage 'Build'
-    def container = docker.build('rest')
+    stage 'build'
+    docker.build('mobycounter')
 
-    stage 'Test'
-    container.inside() {
-        sh 'mvn'
-    }
-
+    stage 'deploy'
+    sh './deploy.sh'
 }
