@@ -3,8 +3,11 @@ node {
     checkout scm
 
     stage 'Build'
-    docker.build('rest')
+    def container = docker.build('rest')
 
     stage 'Test'
-    sh 'mvn'
+    container.inside() {
+        sh 'mvn'
+    }
+
 }
