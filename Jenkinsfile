@@ -3,7 +3,7 @@ node {
 
     stage('Maven build') {
         docker.build('rest')
-        sh 'docker run -t rest mvn'
+        sh 'docker run -t rest mvn clean test'
     }
 
 //    def container = docker.build('rest')
