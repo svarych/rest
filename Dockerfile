@@ -15,4 +15,4 @@ FROM maven:3.3.9-jdk-8
 ##RUN mkdir -p rest-api
 ##RUN cp /home/tober/Desktop/rest/. allure-report:/rest-api
 ##
-#ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
