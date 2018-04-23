@@ -16,4 +16,4 @@ FROM maven:3.3.9-jdk-8
 ##RUN cp /home/tober/Desktop/rest/. allure-report:/rest-api
 ##
 ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
-#RUN mvn clean && mvn install && mvn test
+RUN mvn clean && mvn install && mvn test
