@@ -1,6 +1,12 @@
 node {
     checkout scm
-    sh 'mvn'
+
+    stage('RestAPI') {
+        def container = docker.build('rest')
+        container.inside(){
+            sh "echo 'Starting tests'"
+        }
+    }
 }
 
 //node {
