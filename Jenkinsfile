@@ -1,14 +1,12 @@
 node {
 
     checkout scm
-
     def container
+    container = docker.build('rest')
 
-    stage 'Build' {
-        container = docker.build('rest')
-    }
-
-    stage 'Test' {
-        sh 'mvn'
+    container.inside(){
+        stage 'Test' {
+            sh 'mvn'
+        }
     }
 }
