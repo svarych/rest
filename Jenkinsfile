@@ -4,7 +4,7 @@ node {
     stage('RestAPI') {
         def container = docker.build('rest')
         container.inside(){
-            sh "echo 'Starting tests'"
+//            sh "echo 'Starting tests'"
         }
     }
 }
