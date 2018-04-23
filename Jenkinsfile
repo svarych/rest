@@ -4,8 +4,8 @@ node {
     def container = docker.build('rest')
 //
 //    container.inside() {
-//        stage 'Test' {
-//            sh 'mvn clean test'
-//        }
+        stage 'Test' {
+            sh 'mvn clean test'
+        }
 //    }
 }
