@@ -33,9 +33,11 @@ class RPZ_50637 {
                 .addProperty("DateTime", new Helper().getToday())
                 .addProperty("SenderCityRef", getCityRefByName("Полтава"))
 
-                .build().run(Server.TEST);
+                .build()                .printPrettyRequest()
+                .run(Server.TEST)       .printPrettyResponse()
+        ;
 
-        assertTrue(model.getResponse().get("errors").toString().contains("getStatusDocument not found"));
+        assertTrue(model.getResponse().findValue("Number").toString().contains("CityPickingTimeInterval4"));
     }
 
     @Test
