@@ -1,6 +1,6 @@
 node {
     checkout scm
-    mvn
+    sh 'mvn'
 }
 
 //node {
