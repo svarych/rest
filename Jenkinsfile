@@ -2,7 +2,8 @@ node {
     checkout scm
 
     stage('Maven build') {
-        sh "mvn"
+        docker.build('rest')
+        docker run -t rest sh mvn
     }
 
 //    def container = docker.build('rest')
