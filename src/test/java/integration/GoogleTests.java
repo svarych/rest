@@ -2,9 +2,20 @@ package integration;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import com.codeborne.selenide.webdriver.WebDriverFactory;
+import io.qameta.allure.Attachment;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byName;
@@ -12,6 +23,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleTests {
 
+    // TODO реализовать отображение скриншотов в Allure
     @BeforeEach
     void setUp() throws Exception {
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -38,5 +50,4 @@ public class GoogleTests {
         $(byName("q")).val("selenide").pressEnter();
         $$(".g").get(0).shouldHave(text("Какие преимущества даёт Selenide"));
     }
-
 }
