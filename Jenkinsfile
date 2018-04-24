@@ -1,5 +1,6 @@
 pipeline {
     agent none
+    chekout scm
     stages {
         stage('Back-end') {
             agent {
