@@ -15,7 +15,6 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static io.qameta.allure.Allure.getLifecycle;
 import static io.qameta.allure.util.ResultsUtils.getStatus;
 import static io.qameta.allure.util.ResultsUtils.getStatusDetails;
 
@@ -25,7 +24,7 @@ public class CustomAspect {
 
     private static AllureLifecycle lifecycle;
 
-    @Pointcut("execution(* com.pages.*.*(..))")  // -> (2)
+    @Pointcut("execution(* integration.*.*(..))")  // -> (2)
     public void anyMethod() {
         //pointcut body, should be empty
     }
