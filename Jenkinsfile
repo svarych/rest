@@ -10,9 +10,14 @@ pipeline {
 //                    image 'maven:3.3.9-jdk-8'
 //                }
 
+//                docker {
+//                    image 'openjdk:10-jdk'
+//                }
+
                 docker {
-                    image 'openjdk:10-jdk'
+                    image 'openjdk:8-jdk'
                 }
+
             }
             steps {
                 checkout scm
