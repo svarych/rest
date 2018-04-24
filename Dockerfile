@@ -1,8 +1,6 @@
-FROM maven:3-alpine
+#FROM maven:3-alpine
 
-RUN echo "HELLO, WORLD!"
-
-RUN apt-get install curl
+FROM maven:3.3.9-jdk-8
 
 # Allure report
 RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
