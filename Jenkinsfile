@@ -11,6 +11,7 @@ pipeline {
 
             steps {
 //                checkout scm
+                sh 'allure --version'
                 sh 'mvn --version'
                 sh 'mvn clean test'
             }
