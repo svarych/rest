@@ -14,15 +14,15 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
   && rm -f /tmp/apache-maven.tar.gz \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
 
+# Allure report
+RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
+    && tar -zxvf allure-2.6.0.tgz -C /opt\
+    && ln -s /opt/allure-2.6.0/bin/allure /usr/bin/allure && allure --version
+
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
 COPY mvn-entrypoint.sh /usr/local/bin/mvn-entrypoint.sh
 COPY settings-docker.xml /usr/share/maven/ref/
 
-# Allure report
-RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
-    && tar -zxvf allure-2.6.0.tgz -C /opt\
-    && ln -s /opt/allure-2.6.0/bin/allure /usr/bin/allure && allure --version
-
-#ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
