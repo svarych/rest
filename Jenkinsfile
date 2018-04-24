@@ -15,6 +15,9 @@ pipeline {
                 sh 'mvn clean test'
 
                 sh 'allure generate ./target/surefire-reports/'
+
+                publishHTML([reportName  : 'Demo Report', reportDir: 'allure-report', reportFiles: 'index.html',
+                             reportTitles: '', allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false])
             }
         }
     }
