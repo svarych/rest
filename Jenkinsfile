@@ -18,7 +18,7 @@ pipeline {
 //                publishHTML([reportName  : 'Api Tests Report', reportDir: 'allure-report', reportFiles: 'index.html',
 //                             reportTitles: 'Novaposhta API tests', allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false])
 
-                sh 'allure includeProperties: false, jdk: \'\', results: [[path: \'./target/surefire-reports/\']]'
+                allure includeProperties: false, jdk: '', report: './allure-report', results: [[path: './target/surefire-reports/']]
 
             }
         }
