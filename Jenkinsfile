@@ -10,7 +10,7 @@ pipeline {
             }
 
             steps {
-                checkout scm
+//                checkout scm
                 sh 'mvn --version'
                 sh 'mvn clean test'
             }
