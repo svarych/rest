@@ -4,7 +4,9 @@ pipeline {
         stage('Maven test') {
             agent {
                 docker {
-                    image 'maven:3-alpine'
+                    docker.build('rest')
+//                    image 'maven:3-alpine'
+                    image 'rest'
                 }
             }
 
