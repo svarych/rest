@@ -13,7 +13,7 @@ public class GoogleTests {
 
     @BeforeAll
     static void setUpBrowser(){
-        Configuration.browser = "chrome";
+        Configuration.browser = "phantomjs";
         Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
         Configuration.reportsFolder="./target/surefire-reports";
