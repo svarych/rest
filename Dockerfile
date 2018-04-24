@@ -25,4 +25,4 @@ RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta
     && tar -zxvf allure-2.6.0.tgz -C /opt\
     && ln -s /opt/allure-2.6.0/bin/allure /usr/bin/allure && allure --version
 
-ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
+#ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
