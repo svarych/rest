@@ -6,8 +6,12 @@ pipeline {
 //                docker {
 //                    image 'maven:3-alpine'
 //                }
+//                docker {
+//                    image 'maven:3.3.9-jdk-8'
+//                }
+
                 docker {
-                    image 'maven:3.3.9-jdk-8'
+                    image 'openjdk:10-jdk'
                 }
             }
             steps {
