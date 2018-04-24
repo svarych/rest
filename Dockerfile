@@ -2,7 +2,7 @@ FROM node:7-alpine
 
 RUN echo "HELLO, WORLD!"
 
-RUN mkdir /opt \
+#RUN mkdir /opt \
 
 # Allure report
 RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
