@@ -16,8 +16,8 @@ pipeline {
 
                 sh 'allure generate ./target/surefire-reports/ --clean'
 
-                publishHTML([reportName  : 'Demo Report', reportDir: 'allure-report', reportFiles: 'index.html',
-                             reportTitles: '', allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false])
+                publishHTML([reportName  : 'Api Tests Report', reportDir: 'allure-report', reportFiles: 'index.html',
+                             reportTitles: 'Novaposhta API tests', allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false])
             }
         }
     }
