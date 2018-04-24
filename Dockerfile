@@ -1,5 +1,7 @@
 FROM node:7-alpine
 
+RUN echo "HELLO, WORLD!"
+
 RUN mkdir /opt \
     && chown -R 1000 /usr/local/bin
 
