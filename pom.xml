@@ -42,6 +42,7 @@
                         <include>**/api2/LIVE/internetDocument/*</include>
                         <include>**/api2/LIVE/redirecting/*</include>
                         <include>**/api2/LIVE/registry/*</include>
+                        <include>**/integration/*</include>
                     </includes>
                     <excludes>
                         <!--<exclude>**/TestCircle.java</exclude>-->
