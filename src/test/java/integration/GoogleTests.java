@@ -1,13 +1,9 @@
 package integration;
 
-import io.qameta.allure.Allure;
-import io.qameta.allure.AllureLifecycle;
-import io.qameta.allure.Attachment;
-import io.qameta.allure.model.Status;
-import io.qameta.allure.model.StepResult;
-
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -15,6 +11,11 @@ import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleTests {
+
+    @BeforeEach
+    void setUp() throws Exception {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
 
     @BeforeAll
     static void setUpBrowser() {
@@ -24,7 +25,6 @@ public class GoogleTests {
         Configuration.reportsFolder = "./target/surefire-reports";
     }
 
-    @Attachment
     @Test
     void googleTestShouldBeGreen() {
         open("http://google.com");
@@ -32,7 +32,6 @@ public class GoogleTests {
         $$(".g").get(0).shouldHave(text("Selenide: лаконичные и стабильные UI тесты на Java"));
     }
 
-    @Attachment
     @Test
     void googleTestShouldBeRed() {
         open("http://google.com");
