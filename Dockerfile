@@ -1,9 +1,9 @@
-FROM node:7-alpine
-
-RUN echo "HELLO, WORLD!"
-
-RUN mkdir /opt \
-    && chown -R 1000 /usr/local/bin
+#FROM node:7-alpine
+#
+#RUN echo "HELLO, WORLD!"
+#
+#RUN mkdir /opt \
+#    && chown -R 1000 /usr/local/bin
 
 ## Allure report
 #RUN curl -o allure-2.6.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.6.0/allure-2.6.0.tgz \
