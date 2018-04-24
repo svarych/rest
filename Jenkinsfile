@@ -1,10 +1,14 @@
 pipeline {
     agent none
     stages {
+
+        stage('Docker build') {
+            docker.build('rest')
+        }
+
         stage('Maven test') {
             agent {
                 docker {
-                    docker.build('rest')
 //                    image 'maven:3-alpine'
                     image 'rest'
                 }
