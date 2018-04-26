@@ -40,6 +40,6 @@ public class GoogleTests {
     void googleTestShouldBeRed() {
         open("http://google.com");
         $(byName("q")).val("selenide").pressEnter();
-        $$(".g").get(0).shouldHave(text("Какие преимущества даёт Selenide"));
+        $$(".g").get(0).shouldHave(text("Из-за этого текста ДОЛЖЕН упасть тест!"));
     }
 }
