@@ -10,18 +10,18 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byName;
 import static com.codeborne.selenide.Selenide.*;
 
-public class GoogleTests {
-
-    @BeforeEach
-    void setUp() {
-        System.setProperty("junit.jupiter.extensions.autodetection.enabled", "true");
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
+class GoogleTests {
 
     @BeforeAll
     static void setUpBrowser() {
         Configuration.browser = "phantomjs";
         Configuration.browserSize = "1920x1080";
+    }
+
+    @BeforeEach
+    void setUp() {
+        System.setProperty("junit.jupiter.extensions.autodetection.enabled", "true");
+        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @Test
