@@ -27,14 +27,14 @@ class GoogleTests {
     @Test
     void googleTestShouldBeGreen() {
         open("http://google.com");
-        $(byName("q")).val("selenide").pressEnter();
-        $$(".g").get(0).shouldHave(text("Selenide: лаконичные и стабильные UI тесты на Java"));
+        $(byName("q")).val("Нова пошта").pressEnter();
+        $$(".g").get(0).shouldHave(text("Весь спектр логістичних послуг"));
     }
 
     @Test
     void googleTestShouldBeRed() {
         open("http://google.com");
         $(byName("q")).val("selenide").pressEnter();
-        $$(".g").get(0).shouldHave(text("Из-за этого текста ДОЛЖЕН упасть тест!"));
+        $$(".g").get(0).shouldHave(text("Через цей текст, ПОВИНЕН впати тест ;)"));
     }
 }
