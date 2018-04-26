@@ -34,7 +34,7 @@ class GoogleTests {
     @Test
     void googleTestShouldBeRed() {
         open("http://google.com");
-        $(byName("q")).val("selenide").pressEnter();
+        $(byName("q")).val("Нова пошта").pressEnter();
         $$(".g").get(0).shouldHave(text("Через цей текст, ПОВИНЕН впати тест ;)"));
     }
 }
