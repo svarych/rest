@@ -15,9 +15,6 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class GoogleTests {
 
-//    @Rule
-//    public ScreenShooter makeScreenshotOnFailure = ScreenShooter.failedTests();
-
     // TODO реализовать отображение скриншотов в Allure
     @BeforeEach
     void setUp() {
@@ -56,6 +53,6 @@ public class GoogleTests {
         $(byName("q")).val("selenide").pressEnter();
 //        $$(".g").get(0).shouldHave(text("Selenide: лаконичные и стабильные UI тесты на Java"));
         $$(".g").get(0).shouldHave(text("Что-то пошло не так"));
-        ScreenShooter.failedTests().to("./allure-report/screenshots");
+//        ScreenShooter.failedTests().to("./allure-report/screenshots");
     }
 }
