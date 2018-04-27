@@ -9,7 +9,7 @@ pipeline {
             }
 
             steps {
-                sh 'mvn clean test -Dmaven.test.failure.ignore=true && rm allure-results/*.json'
+                sh 'mvn clean test -Dmaven.test.failure.ignore=true'
                 allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
         }
