@@ -1,4 +1,5 @@
 node {
+    checkout scm
     stage('NP_API') {
         def container = docker.build('tob')
         container.inside() {
