@@ -45,11 +45,11 @@
                     <!--<groups>api2.LIVE.addresses</groups>-->
                     <includes>
                         <include>**/api2/LIVE/addresses/*</include>
-                        <!--<include>**/api2/LIVE/catalogue/*</include>-->
-                        <!--<include>**/api2/LIVE/counterparties/*</include>-->
-                        <!--<include>**/api2/LIVE/internetDocument/*</include>-->
-                        <!--<include>**/api2/LIVE/redirecting/*</include>-->
-                        <!--<include>**/api2/LIVE/registry/*</include>-->
+                        <include>**/api2/LIVE/catalogue/*</include>
+                        <include>**/api2/LIVE/counterparties/*</include>
+                        <include>**/api2/LIVE/internetDocument/*</include>
+                        <include>**/api2/LIVE/redirecting/*</include>
+                        <include>**/api2/LIVE/registry/*</include>
                         <!--<include>**/integration/*</include>-->
                     </includes>
                     <excludes>
