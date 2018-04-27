@@ -26,26 +26,26 @@ node {
         def container = docker.build('tob')
         container.inside() {
             String model = ''
-            if (env.ADDRESSES) {
+            if (env.ADDRESSES.toBoolean()) {
                 model += ' -Dtest=api2.LIVE.addresses.*'
             }
-            if (env.CATALOGUE) {
+            if (env.CATALOGUE.toBoolean()) {
                 model += ' -Dtest=api2.LIVE.catalogue.*'
             }
-            if (env.COUNTERPARTIES) {
+            if (env.COUNTERPARTIES.toBoolean()) {
                 model += ' -Dtest=api2.LIVE.counterparties.*'
             }
-            if (env.INTERNET_DOCUMENT) {
+            if (env.INTERNET_DOCUMENT.toBoolean()) {
                 model += ' -Dtest=api2.LIVE.internetDocument.*'
             }
-            if (env.REDIRECTING) {
+            if (env.REDIRECTING.toBoolean()) {
                 model += ' -Dtest=api2.LIVE.redirecting.*'
             }
-            if (env.REGISTRY) {
+            if (env.REGISTRY.toBoolean()) {
                 model += ' -Dtest=api2.LIVE.registry.*'
             }
 
-                echo 'TOBERRRRRRRRRRRRRRRRRRRRRRR' + model
+            echo 'TOBERRRRRRRRRRRRRRRRRRRRRRR' + model
 
         }
     }
