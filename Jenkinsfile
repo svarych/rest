@@ -45,9 +45,8 @@ node {
                 model += ' -Dtest=api2.LIVE.registry.*'
             }
 
-            steps {
-                echo 'TOBERRRRRRRRRRRRRRRRRRRRRRR'
-            }
+                echo 'TOBERRRRRRRRRRRRRRRRRRRRRRR' + model
+
         }
     }
 }
