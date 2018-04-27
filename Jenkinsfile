@@ -45,8 +45,8 @@ node {
                 model += ' -Dtest=api2.LIVE.registry.*'
             }
 
-            echo 'TOBERRRRRRRRRRRRRRRRRRRRRRR' + model
-
+            sh 'rm allure-results/*.json && mvn clean test -Dmaven.test.failure.ignore=true' + model
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
 }
