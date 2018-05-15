@@ -28,3 +28,7 @@ node {
         }
     }
 }
+
+
+//      /var/jenkins_home/workspace/awis_scheduled/reports
+//      /var/jenkins_home/jobs/test0/htmlreports

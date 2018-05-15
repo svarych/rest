@@ -68,8 +68,10 @@ public class Helper {
     public String getApiKeyLoyaltyLive() throws IOException {
         Model model = new ModelBuilder()
                 .modelName("LoyaltyUser").calledMethod("getLoyaltyUserByLogin")
-                .addProperty("Login", "50cdd@hell.yeah")
-                .addProperty("Password", "1234")
+//                .addProperty("Login", "50cdd@hell.yeah")
+//                .addProperty("Password", "1234")
+                .addProperty("Login", "alexxxvunet@mail.ru")
+                .addProperty("Password", "123456")
                 .build().run();
         return clear(model.getResponse().findValue("ApiKey").toString());
     }
