@@ -92,7 +92,7 @@ class RPZ_52338_51920 {
                 .build().printPrettyRequest()
                 .run(Server.TEST).printPrettyResponse();
 
-        String ref = model.getResponse().findValue("Ref").toString().replace("\"", "");
+        String ref = clean(model.getResponse().findValue("Ref").toString());
 
         LinkedHashMap<String, Object> backwardDeliveryDataMap = new LinkedHashMap<>();
         backwardDeliveryDataMap.put("PayerType", "Sender");
