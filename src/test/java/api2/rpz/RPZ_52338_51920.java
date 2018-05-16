@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RPZ_52338_51920 {
 
-    static List<String> ewToDelete = new ArrayList<>();
+    private static List<String> ewToDelete = new ArrayList<>();
 
     private Model model;
 
@@ -126,7 +126,7 @@ class RPZ_52338_51920 {
                 .run(Server.TEST).printPrettyResponse();
 
         assertTrue(model.getResponse().get("success").asBoolean());
-        ewToDelete.add(model.getResponse().findValue("Ref").toString());
+        ewToDelete.add(clean(model.getResponse().findValue("Ref").toString()));
     }
 
     @ParameterizedTest
@@ -181,7 +181,7 @@ class RPZ_52338_51920 {
                 .run(Server.TEST).printPrettyResponse();
 
         assertTrue(model.getResponse().get("success").asBoolean());
-        ewToDelete.add(model.getResponse().findValue("Ref").toString().replace("\"", ""));
+        ewToDelete.add(clean(model.getResponse().findValue("Ref").toString()));
     }
 
     @AfterAll
@@ -192,5 +192,9 @@ class RPZ_52338_51920 {
                 .run(Server.TEST)
                 .printPrettyResponse()
         ;
+    }
+
+    String clean(String s) {
+        return s.replace("\"", "");
     }
 }
