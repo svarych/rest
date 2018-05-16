@@ -2,8 +2,10 @@ package api2.rpz;
 
 import api2.models.counterparties.CreateContactPerson;
 import api2.models.internetDocument.CreateEW;
+import api2.models.internetDocument.DeleteEW;
 import api2.service.Model;
 import api2.service.enums.Server;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -19,7 +21,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * RPZ-50685 for RPZ-51634
  */
 
-class RPZ_52338 {
+class RPZ_52338_51920 {
+
+    static List<String> ewToDelete = new ArrayList<>();
 
     private Model model;
 
@@ -71,8 +75,8 @@ class RPZ_52338 {
                     "Потрррійний",
 
                     // Negative (exploration)
-//                    "довереность", // 1 літера 'н'
-//                    "12345"
+                    "довереность", // 1 літера 'н'
+                    "12345"
             })
     @DisplayName("Names should be correct")
     void namesTest(String name) throws IOException {
@@ -122,6 +126,7 @@ class RPZ_52338 {
                 .run(Server.TEST).printPrettyResponse();
 
         assertTrue(model.getResponse().get("success").asBoolean());
+        ewToDelete.add(model.getResponse().findValue("Ref").toString());
     }
 
     @ParameterizedTest
@@ -176,5 +181,16 @@ class RPZ_52338 {
                 .run(Server.TEST).printPrettyResponse();
 
         assertTrue(model.getResponse().get("success").asBoolean());
+        ewToDelete.add(model.getResponse().findValue("Ref").toString().replace("\"", ""));
+    }
+
+    @AfterAll
+    static void deleteCreatedEWs() throws IOException {
+        new DeleteEW().deleteEW(ewToDelete)
+                .apiKey("b96bd5383d1c0b66d29d859030c0d7de")
+                .build().printPrettyRequest()
+                .run(Server.TEST)
+                .printPrettyResponse()
+        ;
     }
 }

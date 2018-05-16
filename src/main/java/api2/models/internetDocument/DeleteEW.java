@@ -10,12 +10,13 @@ import api2.service.ModelBuilder;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public final class DeleteEW extends ModelBuilder {
 
     private ArrayList refList;
 
-    private ArrayList<String> LIST = new ArrayList<>();
+    private List<String> LIST = new ArrayList<>();
 
     public DeleteEW() throws IOException {
         refList = getRefList();
@@ -30,6 +31,11 @@ public final class DeleteEW extends ModelBuilder {
 
     public DeleteEW deleteEW(String... refs) {
         LIST.addAll(Arrays.asList(refs));
+        return this;
+    }
+
+    public DeleteEW deleteEW(List<String> list) {
+        LIST.addAll(list);
         return this;
     }
 
