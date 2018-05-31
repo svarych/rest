@@ -23,11 +23,11 @@ public final class GetStreetsOfCompany extends ModelBuilder {
     @SuppressWarnings("SpellCheckingInspection")
     public GetStreetsOfCompany() {
         this
-                .apiKey("38d9f4c9c98686aca629634a245d7828")
+                .apiKey("88480f5e25e304a397605165c6f12d7c")
                 .modelName("Address")
                 .calledMethod("getStreet")
 
-                .addProperty("CityRef", "ebc0eda9-93ec-11e3-b441-0050568002cf")
+                .addProperty("CityRef", "e718a680-4b33-11e4-ab6d-005056801329")
         ;
     }
 

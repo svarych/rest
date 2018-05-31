@@ -29,7 +29,7 @@ public final class GetSettlementsUkraine extends ModelBuilder {
     @SuppressWarnings("SpellCheckingInspection")
     public GetSettlementsUkraine() {
         this
-                .apiKey("38d9f4c9c98686aca629634a245d7828")
+                .apiKey("88480f5e25e304a397605165c6f12d7c")
                 .modelName("AddressGeneral")
                 .calledMethod("getSettlements")
 
