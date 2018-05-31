@@ -19,15 +19,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 /**
  * RPZ-50685 for RPZ-51634
+ * Запрет создания переадресации/довоза по ЕН с контролем оплаты
  */
 
 class RPZ_51935_51634 {
 
     private Model model;
-
-    /**
-     * RPZ-51634
-     */
 
     @BeforeAll
     static void setUp() {
@@ -44,7 +41,7 @@ class RPZ_51935_51634 {
         String number = clean(model.getResponse().findValue("IntDocNumber").toString());
 
         // Створюємо експрес-накладну на основі створеного інтернет-документа
-        createAwisEWByNumber(number);
+        createAwisEWByIDNumber(number);
 
         // Перевіряємо можливість зробити переадреацію
         checkRedirectPossibility(number);
@@ -58,7 +55,7 @@ class RPZ_51935_51634 {
                 clean(model.getResponse().get("errors").get(0).toString()));
     }
 
-    private void createAwisEWByNumber(String number) throws Exception {
+    private void createAwisEWByIDNumber(String number) throws Exception {
         open("http://wis14.np.ua/ULKTest");
         $(byName("user")).setValue("svarych.a");
         $(byName("password")).setValue("123").pressEnter();
