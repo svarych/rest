@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class Model {
     private Connector connector = new Connector();
@@ -127,20 +128,13 @@ public class Model {
         }
     }
 
-    private ArrayList attentions(String type) {
-        ArrayList<Object> scope = new ArrayList<>(getResponse().findValues(type));
-//        ArrayList<String> list = new ArrayList<>();
-//        for (Object o : scope) {
-//            String s = o.toString().replace("[", "").replace("]", "").trim();
-//            if (s.length() > 0) {
-//                list.add(s);
-//            }
-//        }
-//        return list;
+    private List attentions(String type) {
+        List<Object> scope = new ArrayList<>(getResponse().findValues(type));
+        List<String> list = new ArrayList<>();
+        scope.stream().filter(object -> object.toString().length() > 0)
+                .map(object -> object.toString().replace("[", "").replace("]", "").trim()).forEach(list::add);
 
-        return (ArrayList) scope.stream()
-                .filter(object -> object.toString().length() > 0)
-                .map(object -> object.toString().replace("[", "").replace("]", "").trim());
+        return list;
     }
 
     public Model assertTrue(Boolean condition) {
