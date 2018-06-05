@@ -129,14 +129,18 @@ public class Model {
 
     private ArrayList attentions(String type) {
         ArrayList<Object> scope = new ArrayList<>(getResponse().findValues(type));
-        ArrayList<String> list = new ArrayList<>();
-        for (Object o : scope) {
-            String s = o.toString().replace("[", "").replace("]", "").trim();
-            if (s.length() > 0) {
-                list.add(s);
-            }
-        }
-        return list;
+//        ArrayList<String> list = new ArrayList<>();
+//        for (Object o : scope) {
+//            String s = o.toString().replace("[", "").replace("]", "").trim();
+//            if (s.length() > 0) {
+//                list.add(s);
+//            }
+//        }
+//        return list;
+
+        return (ArrayList) scope.stream()
+                .filter(object -> object.toString().length() > 0)
+                .map(object -> object.toString().replace("[", "").replace("]", "").trim());
     }
 
     public Model assertTrue(Boolean condition) {

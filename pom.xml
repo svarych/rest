@@ -112,7 +112,6 @@
             <version>2.3.0</version>
         </dependency>
 
-
         <!--TEST REPORTING - ALLURE-->
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-generator -->
         <dependency>

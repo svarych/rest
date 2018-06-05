@@ -22,6 +22,3 @@ public class XmlModel {
     private Double computedValue;
 
 }
-
-class TestClass {
-}
