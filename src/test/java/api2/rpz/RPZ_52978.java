@@ -4,6 +4,11 @@ import api2.service.DataBase;
 import api2.service.Model;
 import api2.service.ModelBuilder;
 import api2.service.enums.Server;
+import awis.pages.CreateContactPersonPage;
+import awis.pages.NewLoyaltyCardPage;
+import awis.pages.MainPage;
+import awis.pages.RegisterLoyaltyCardPage;
+import awis.pages.enums.CardType;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -15,6 +20,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
+
+import static com.codeborne.selenide.Selenide.open;
 
 /**
  * RPZ-50685 for RPZ-52978 - "Вход в МП клиентов с картой клиента выданой через Авис"
@@ -36,9 +43,9 @@ class RPZ_52978 {
     @DisplayName("Easy Register")
     void easyRegisterRequest() throws IOException, SQLException, ParseException {
 
-        String phone = "0270000002";
+        String phone = "0270000005";
 
-        registerUserOnSite(phone, phone + "@novaposhta.ua");
+//        registerUserOnSite(phone, phone + "@novaposhta.ua");
 
         model = new ModelBuilder()
                 .system("MobileApp")
@@ -67,7 +74,8 @@ class RPZ_52978 {
                 .build().printPrettyRequest().run(Server.TEST).printPrettyResponse();
     }
 
-    //======================================================================================================================
+//======================================================================================================================
+
     private void registerUserOnSite(String phone, String email) throws ParseException, SQLException {
         new RegisterPage(webclient.Server.TEST, UserType.LOYALTY)
                 .city("Київ")
@@ -85,13 +93,41 @@ class RPZ_52978 {
         new AuthPage().userType(UserType.LOYALTY).login(email).password("user" + lastChar(phone)).submit();
     }
 
+//======================================================================================================================
+
+    @Test
+    void registerCardOnAwis() throws ParseException, SQLException {
+        String cardNumber = "10000009";
+        open("http://wis14.np.ua/ULKTest");
+        new awis.pages.AuthPage().login("homenko.a").password("123").submit();
+
+        // Видача
+//        new MainPage()
+//                .click("Обробки")
+//                .hover("Лояльність")
+//                .click("Видача карти лояльності");
+//        new NewLoyaltyCardPage()
+//                .number(cardNumber)
+//                .write();
+
+        // Реєстрація
+        new MainPage()
+                .click("Обробки")
+                .hover("Лояльність")
+                .click("Реєстрація карти");
+
+        new RegisterLoyaltyCardPage(cardNumber).newCounterParty();
+
+        new CreateContactPersonPage().lastName("Пупкін").phone("380210000001").firstName("п");
+    }
+
+//    ------------------------------------------------------------------------------------------------------------------
+
     @Test
     @DisplayName("Get all codes for phone")
     void t3() throws SQLException {
         System.out.println(getCodesForPhone("380260000005"));
     }
-
-//    ------------------------------------------------------------------------------------------------------------------
 
     private String activationCodeForPhone(String phone) throws SQLException {
         String[] list;
