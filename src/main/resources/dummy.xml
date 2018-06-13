@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Structure>
+    <Value name="Action">
+        <Type>String</Type>
+        <Data>FindLoyaltyCard</Data>
+    </Value>
+    <Value name="PhoneCustomer">
+        <Type>String</Type>
+        <Data>380672203916</Data>
+    </Value>
+    <Value name="Code">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+    <Value name="LoyaltyCardRef">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+    <Value name="EDRPOU">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+</Structure>

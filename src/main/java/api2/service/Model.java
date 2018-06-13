@@ -143,4 +143,20 @@ public class Model {
     }
 
     //==================================================================================================================
+
+    public static String clear(String s) {
+        return s
+                .replace("[", "")
+                .replace("]", "")
+                .replace("\"", "")
+                ;
+    }
+
+    public static String clear(Object s) {
+        return s.toString()
+                .replace("[", "")
+                .replace("]", "")
+                .replace("\"", "")
+                ;
+    }
 }
