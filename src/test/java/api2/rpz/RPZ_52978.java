@@ -4,10 +4,7 @@ import api2.service.DataBase;
 import api2.service.Model;
 import api2.service.ModelBuilder;
 import api2.service.enums.Server;
-import awis.pages.CreateContactPersonPage;
-import awis.pages.NewLoyaltyCardPage;
-import awis.pages.MainPage;
-import awis.pages.RegisterLoyaltyCardPage;
+import awis.pages.*;
 import awis.pages.enums.CardType;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -15,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import webclient.UserType;
 import webclient.pages.*;
+import webclient.pages.AuthPage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,11 +39,9 @@ class RPZ_52978 {
 
     @Test
     @DisplayName("Easy Register")
-    void easyRegisterRequest() throws IOException, SQLException, ParseException {
+    void easyRegisterRequest() throws IOException, SQLException {
 
-        String phone = "0270000005";
-
-//        registerUserOnSite(phone, phone + "@novaposhta.ua");
+        String phone = "0503011103";
 
         model = new ModelBuilder()
                 .system("MobileApp")
@@ -60,8 +56,6 @@ class RPZ_52978 {
                 .run(Server.TEST)
                 .printPrettyResponse();
         // TODO: Ищем карту лояльности
-
-
         // TODO: Если карта есть, но по рефу нет ЛК - сздаем випа+вип-юзера по упрощенной схеме, запросом:
         model = new ModelBuilder()
                 .system("MobileApp")
@@ -96,8 +90,8 @@ class RPZ_52978 {
 //======================================================================================================================
 
     @Test
-    void registerCardOnAwis() throws ParseException, SQLException {
-        String cardNumber = "10000009";
+    void registerCardOnAwis() {
+        String cardNumber = "100000011";
         open("http://wis14.np.ua/ULKTest");
         new awis.pages.AuthPage().login("homenko.a").password("123").submit();
 
@@ -106,6 +100,8 @@ class RPZ_52978 {
 //                .click("Обробки")
 //                .hover("Лояльність")
 //                .click("Видача карти лояльності");
+
+//        // Тип карти
 //        new NewLoyaltyCardPage()
 //                .number(cardNumber)
 //                .write();
@@ -116,9 +112,10 @@ class RPZ_52978 {
                 .hover("Лояльність")
                 .click("Реєстрація карти");
 
-        new RegisterLoyaltyCardPage(cardNumber).newCounterParty();
+        new RegisterLoyaltyCardPage(cardNumber).type(CardType.Indentification);
 
-        new CreateContactPersonPage().lastName("Пупкін").phone("380210000001").firstName("п");
+//        new CreateContactPersonPage().lastName("Петренко").firstName("Петро").middleName("Петрович").phone("380221112233").submit();
+        new FindCounterPartyPage().edrpou("12345678").name("ТОВ Тестування");
     }
 
 //    ------------------------------------------------------------------------------------------------------------------

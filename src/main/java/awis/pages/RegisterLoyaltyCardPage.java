@@ -32,7 +32,7 @@ public class RegisterLoyaltyCardPage {
         buttonNew.click();
         buttonNew.shouldBe(Condition.disappear);
 
-        SelenideElement activeTab = $(byXpath("(//a[@class='x-tab-close-btn'])[last()]"));
+        SelenideElement activeTab = $(byXpath("//span[.='Пошук за номером телефона/кодом ЄДРПОУ']/../../../a"));
         activeTab.click();
         activeTab.should(Condition.disappear);
 
