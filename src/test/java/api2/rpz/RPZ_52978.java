@@ -4,7 +4,9 @@ import api2.service.DataBase;
 import api2.service.Model;
 import api2.service.ModelBuilder;
 import api2.service.enums.Server;
-import awis.pages.*;
+import awis.pages.FindCounterPartyPage;
+import awis.pages.MainPage;
+import awis.pages.RegisterLoyaltyCardPage;
 import awis.pages.enums.CardType;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -12,7 +14,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import webclient.UserType;
 import webclient.pages.*;
-import webclient.pages.AuthPage;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -41,7 +42,7 @@ class RPZ_52978 {
     @DisplayName("Easy Register")
     void easyRegisterRequest() throws IOException, SQLException {
 
-        String phone = "0503011103";
+        String phone = "0997894512";
 
         model = new ModelBuilder()
                 .system("MobileApp")
@@ -55,8 +56,7 @@ class RPZ_52978 {
                 .printPrettyRequest()
                 .run(Server.TEST)
                 .printPrettyResponse();
-        // TODO: Ищем карту лояльности
-        // TODO: Если карта есть, но по рефу нет ЛК - сздаем випа+вип-юзера по упрощенной схеме, запросом:
+        // Если карта есть, но по рефу нет ЛК - сздаем випа+вип-юзера по упрощенной схеме
         model = new ModelBuilder()
                 .system("MobileApp")
                 .modelName("LoyaltyUser")
@@ -89,7 +89,7 @@ class RPZ_52978 {
 
 //======================================================================================================================
 
-    @Test
+    //    @Test
     void registerCardOnAwis() {
         String cardNumber = "100000011";
         open("http://wis14.np.ua/ULKTest");
@@ -120,7 +120,7 @@ class RPZ_52978 {
 
 //    ------------------------------------------------------------------------------------------------------------------
 
-    @Test
+    //    @Test
     @DisplayName("Get all codes for phone")
     void t3() throws SQLException {
         System.out.println(getCodesForPhone("380260000005"));
@@ -152,7 +152,7 @@ class RPZ_52978 {
         return link;
     }
 
-    char lastChar(String s) {
+    private char lastChar(String s) {
         return s.charAt(s.length() - 1);
     }
 }

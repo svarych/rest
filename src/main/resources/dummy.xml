@@ -1,23 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Structure>
     <Value name="Action">
         <Type>String</Type>
-        <Data>FindLoyaltyCard</Data>
+        <Data>getCurrencyRates</Data>
     </Value>
-    <Value name="PhoneCustomer">
+    <Value name="Field">
         <Type>String</Type>
-        <Data>380672203916</Data>
+        <Data>Date</Data>
     </Value>
-    <Value name="Code">
+    <Value name="Value">
         <Type>String</Type>
-        <Data></Data>
-    </Value>
-    <Value name="LoyaltyCardRef">
-        <Type>String</Type>
-        <Data></Data>
-    </Value>
-    <Value name="EDRPOU">
-        <Type>String</Type>
-        <Data></Data>
+        <Data>2018-06-11</Data>
     </Value>
 </Structure>
