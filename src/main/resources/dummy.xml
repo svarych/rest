@@ -1,15 +1,105 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <Structure>
+
+    <Value name="FirstName">
+        <Type>String</Type>
+        <Data>Іван</Data>
+    </Value>
+
+    <Value name="MiddleName">
+        <Type>String</Type>
+        <Data>Іванович</Data>
+    </Value>
+
+    <Value name="LastName">
+        <Type>String</Type>
+        <Data>Іванов</Data>
+    </Value>
+
+    <Value name="EDRPOU">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+
+    <Value name="Post">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+
+    <Value name="BirthDate">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+
+    <Value name="Sex">
+        <Type>String</Type>
+        <Data>M</Data>
+    </Value>
+
+    <Value name="PassportSeries">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+
+    <Value name="PassportNumber">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+
+    <Value name="City">
+        <Type>String</Type>
+        <Data>8d5a980d-391c-11dd-90d9-001a92567626</Data>
+    </Value>
+
+    <Value name="EMail">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+
+    <Value name="TypeOfPartner">
+        <Type>String</Type>
+        <Data>Organization</Data>
+    </Value>
+
+    <Value name="OwnershipForm">
+        <Type>String</Type>
+        <Data>d558bfcb-7456-11df-ad52-000c29118aa7</Data>
+    </Value>
+
+    <Value name="Phone">
+        <Type>String</Type>
+        <Data>380221234567</Data>
+    </Value>
+
+    <Value name="SiteAddress">
+        <Type>String</Type>
+        <Data></Data>
+    </Value>
+
+    <Value name="FullName">
+        <Type>String</Type>
+        <Data>Іванов Іван Іванович</Data>
+    </Value>
+
+    <Value name="NotSendSMS">
+        <Type>Number</Type>
+        <Data>1</Data>
+    </Value>
+
+    <Value name="NotCreateVip">
+        <Type>Number</Type>
+        <Data>1</Data>
+    </Value>
+
+    <Value name="MarketplacePartner">
+        <Type>CatalogRef.MarketplacePartners</Type>
+        <Data></Data>
+    </Value>
+
     <Value name="Action">
         <Type>String</Type>
-        <Data>getCurrencyRates</Data>
+        <Data>LoyaltyRegisterCard</Data>
     </Value>
-    <Value name="Field">
-        <Type>String</Type>
-        <Data>Date</Data>
-    </Value>
-    <Value name="Value">
-        <Type>String</Type>
-        <Data>2018-06-11</Data>
-    </Value>
+
 </Structure>

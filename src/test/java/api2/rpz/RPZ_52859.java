@@ -60,8 +60,8 @@ class RPZ_52859 {
         Configuration.fastSetValue = true;
         Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
-        setPhone("380270000117");
-        setLogin("001" + lastChar(getPhone()) + "@novaposhta.ua");
+        setPhone("380270000119");
+        setLogin("0001" + lastChar(getPhone()) + "@novaposhta.ua");
         setPassword("password");
     }
 
@@ -74,15 +74,15 @@ class RPZ_52859 {
                 .calledMethod("registration")
 
                 .addProperty("City", "Киев")
-                .addProperty("FirstName", "Мустафа")
-                .addProperty("LastName", "Герасімов")
-                .addProperty("Patronymic", "Джохарович")
+                .addProperty("FirstName", "Едуард")
+                .addProperty("LastName", "Едуардович")
+                .addProperty("Patronymic", "Едуардов")
                 .addProperty("Phone", getPhone())
                 .addProperty("Email", getLogin())
                 .addProperty("Password", getPassword())
                 .addProperty("CounterpartyType", "Organization")
                 .addProperty("OwnerShipForm", "7f0f351d-2519-11df-be9a-000c291af1b3")
-                .addProperty("CompanyName", "СП ДП СУПЕР ФІРМА ГЕРАСІМОВ")
+                .addProperty("CompanyName", "СП ДП СУПЕР ФІРМА ЕДУАРДА")
 //                .addProperty("EDRPOU", "723456713")
                 .addProperty("MarketplacePartnerToken", "005056887b8d-8478-11e5-c9ad-fa7dc024")
 

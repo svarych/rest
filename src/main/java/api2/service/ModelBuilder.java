@@ -38,6 +38,11 @@ public class ModelBuilder {
         return this;
     }
 
+    public ModelBuilder methodProperty(String K, Object V) {
+        methodProperties.put(K, V);
+        return this;
+    }
+
     public ModelBuilder removeProperty(String K) {
         methodProperties.remove(K);
         return this;

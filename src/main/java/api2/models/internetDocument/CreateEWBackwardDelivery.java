@@ -4,8 +4,11 @@
 
 package api2.models.internetDocument;
 
+import api2.service.Model;
 import api2.service.ModelBuilder;
+import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.LinkedHashMap;
 
 public final class CreateEWBackwardDelivery extends ModelBuilder {
@@ -35,5 +38,11 @@ public final class CreateEWBackwardDelivery extends ModelBuilder {
         map.put("WaybillNewPostWithStamp", true);
         map.put("UserActions", "UserCallSender");
         return map;
+    }
+
+
+    @Test
+    void bd() throws IOException {
+        Model model = new CreateEWBackwardDelivery().build().printPrettyRequest();
     }
 }
